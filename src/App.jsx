@@ -1,5 +1,5 @@
 const profile = {
-  name: "Abylau",
+  name: "Nazerke",
   role: "Frontend learner",
   github: "https://github.com/abylau2",
 };
@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Go to the top">
-        AB
+        NZ
       </a>
       <nav aria-label="Main navigation">
         <a href="#about">About</a>
@@ -36,7 +36,7 @@ function ProfileIntro() {
       <figure className="portrait-frame">
         <img
           src={`${import.meta.env.BASE_URL}profile-illustration.svg`}
-          alt="Abstract illustrated portrait representing Abylau"
+          alt="Abstract illustrated portrait representing Nazerke"
         />
         <figcaption>Learning one project at a time.</figcaption>
       </figure>
