@@ -1,0 +1,22 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Abstract portrait illustration</title>
+  <desc id="description">A warm editorial illustration of a person working on a laptop.</desc>
+  <rect width="800" height="1000" fill="#DCC7AF"/>
+  <path d="M0 702C165 623 316 625 464 688C591 742 698 727 800 664V1000H0V702Z" fill="#BA6D48"/>
+  <circle cx="594" cy="160" r="94" fill="#F5EBD8"/>
+  <path d="M122 144H408" stroke="#20201D" stroke-width="12"/>
+  <path d="M122 183H314" stroke="#20201D" stroke-width="4"/>
+  <path d="M477 346C477 277 421 221 352 221C283 221 227 277 227 346V480H477V346Z" fill="#20201D"/>
+  <ellipse cx="354" cy="382" rx="101" ry="126" fill="#D99A72"/>
+  <path d="M255 349C281 345 311 326 332 295C359 332 413 354 464 354C454 275 411 235 348 235C290 235 259 277 255 349Z" fill="#20201D"/>
+  <circle cx="319" cy="383" r="7" fill="#20201D"/>
+  <circle cx="394" cy="383" r="7" fill="#20201D"/>
+  <path d="M332 442C348 454 371 454 388 442" stroke="#20201D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M208 720C226 578 292 515 356 515C420 515 500 580 523 720H208Z" fill="#F3F0E9"/>
+  <path d="M102 805L173 604L438 670L383 864L102 805Z" fill="#20201D"/>
+  <rect x="386" y="604" width="270" height="188" rx="5" transform="rotate(7 386 604)" fill="#EEE8DD" stroke="#20201D" stroke-width="8"/>
+  <circle cx="523" cy="704" r="19" fill="#D7582B"/>
+  <path d="M106 808L381 866" stroke="#F3F0E9" stroke-width="10"/>
+  <path d="M637 870H741" stroke="#20201D" stroke-width="8"/>
+  <path d="M689 818V922" stroke="#20201D" stroke-width="8"/>
+</svg>
