@@ -379,7 +379,7 @@ button:focus-visible {
 
 .figure-frame {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   background-color: var(--bg-subtle);
   border: 1px solid var(--text);
   overflow: hidden;

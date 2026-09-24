@@ -10,7 +10,7 @@ export default function Header({ links }) {
 
         <nav className="header-nav" aria-label="Main navigation">
           <a href="#about" className="nav-item">
-            <span className="nav-index">01</span> About Me
+            <span className="nav-index">01</span> About
           </a>
           <a href="#projects" className="nav-item">
             <span className="nav-index">02</span> Work
