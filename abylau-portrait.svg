@@ -1,0 +1,109 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Abylau — Creative Developer Swiss Poster</title>
+  <desc id="desc">High-contrast Swiss graphic poster of frontend engineer Abylau with technical geometric shapes and architectural grid lines.</desc>
+
+  <defs>
+    <!-- Technical Blueprint Grid -->
+    <pattern id="swiss-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#121316" stroke-width="0.75" stroke-opacity="0.12" />
+      <circle cx="0" cy="0" r="1.5" fill="#121316" fill-opacity="0.3" />
+    </pattern>
+    <pattern id="diag-lines" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#121316" stroke-width="2" stroke-opacity="0.1" />
+    </pattern>
+  </defs>
+
+  <!-- Poster Base Background: Fine Paper Cream -->
+  <rect width="800" height="1000" fill="#F4F1EA" />
+  <rect width="800" height="1000" fill="url(#swiss-grid)" />
+
+  <!-- Outer Poster Border Frame -->
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#121316" stroke-width="4" />
+  <rect x="32" y="32" width="736" height="936" fill="none" stroke="#121316" stroke-width="1.5" />
+
+  <!-- Corner Crop Marks / Technical Crosshairs -->
+  <g stroke="#121316" stroke-width="2">
+    <line x1="16" y1="24" x2="36" y2="24" />
+    <line x1="24" y1="16" x2="24" y2="36" />
+    <line x1="764" y1="24" x2="784" y2="24" />
+    <line x1="776" y1="16" x2="776" y2="36" />
+    <line x1="16" y1="976" x2="36" y2="976" />
+    <line x1="24" y1="964" x2="24" y2="984" />
+    <line x1="764" y1="976" x2="784" y2="976" />
+    <line x1="776" y1="964" x2="776" y2="984" />
+  </g>
+
+  <!-- Top Metadata Bar -->
+  <text x="50" y="65" font-family="'Space Mono', monospace, sans-serif" font-size="12" font-weight="700" fill="#121316" letter-spacing="2">ARCHIVE // EDITION 02</text>
+  <text x="400" y="65" font-family="'Space Mono', monospace, sans-serif" font-size="12" font-weight="700" fill="#121316" text-anchor="middle" letter-spacing="2">ALMATY · PLANET EARTH</text>
+  <text x="750" y="65" font-family="'Space Mono', monospace, sans-serif" font-size="12" font-weight="700" fill="#121316" text-anchor="end" letter-spacing="2">2026.SYS</text>
+  <line x1="32" y1="80" x2="768" y2="80" stroke="#121316" stroke-width="2" />
+
+  <!-- Giant Background Graphic Lettering -->
+  <text x="50" y="240" font-family="'Syne', 'Arial Black', sans-serif" font-size="170" font-weight="900" fill="#1036E8" letter-spacing="-8">AB</text>
+  <text x="320" y="240" font-family="'Syne', 'Arial Black', sans-serif" font-size="170" font-weight="900" fill="#FF4400" letter-spacing="-8">02</text>
+
+  <!-- Geometric Abstract Blocks -->
+  <!-- Cobalt Blue Rectangle Panel -->
+  <rect x="50" y="280" width="310" height="340" fill="#1036E8" />
+  <rect x="50" y="280" width="310" height="340" fill="url(#diag-lines)" />
+  <rect x="65" y="295" width="280" height="310" fill="none" stroke="#F4F1EA" stroke-width="2" />
+  <!-- Technical Code Graphic Inside Cobalt Panel -->
+  <text x="85" y="340" font-family="'Space Mono', monospace" font-size="15" font-weight="700" fill="#F4F1EA">&lt;Component /&gt;</text>
+  <text x="85" y="375" font-family="'Space Mono', monospace" font-size="12" fill="#F4F1EA" opacity="0.8">type: "Interface"</text>
+  <text x="85" y="405" font-family="'Space Mono', monospace" font-size="12" fill="#F4F1EA" opacity="0.8">state: "reactive"</text>
+  <text x="85" y="435" font-family="'Space Mono', monospace" font-size="12" fill="#F4F1EA" opacity="0.8">build: "Vite + ESNext"</text>
+  <text x="85" y="465" font-family="'Space Mono', monospace" font-size="12" fill="#F4F1EA" opacity="0.8">stack: ["React", "CSS"]</text>
+  <line x1="85" y1="495" x2="310" y2="495" stroke="#F4F1EA" stroke-width="2" opacity="0.6" />
+  <text x="85" y="535" font-family="'Space Mono', monospace" font-size="28" font-weight="900" fill="#D4FF00">READY</text>
+
+  <!-- Large Graphic Vermilion Sun / Circle -->
+  <circle cx="580" cy="450" r="160" fill="#FF4400" />
+  <circle cx="580" cy="450" r="150" fill="none" stroke="#121316" stroke-width="4" stroke-dasharray="10 6" />
+
+  <!-- Graphic Silkscreen Male Developer Silhouette (Clean, architectural lines) -->
+  <!-- Shoulders & Dark Technical Coat -->
+  <path d="M260 880 C270 710 350 670 480 670 C610 670 690 710 700 880 Z" fill="#121316" />
+  
+  <!-- Modern Clean Cut Head & Jawline -->
+  <path d="M380 480 C380 370 430 330 500 330 C570 330 620 370 620 480 C620 590 570 640 500 640 C430 640 380 590 380 480 Z" fill="#F4F1EA" stroke="#121316" stroke-width="7" />
+  
+  <!-- Hair: Sharp Modern Crop / Texture -->
+  <path d="M375 450 C370 350 410 280 500 280 C590 280 630 350 625 450 C610 420 580 410 550 410 C515 410 495 425 465 410 C430 395 395 420 375 450 Z" fill="#121316" />
+
+  <!-- Studio Headphones -->
+  <path d="M360 490 C350 370 410 320 500 320 C590 320 650 370 640 490" fill="none" stroke="#121316" stroke-width="12" stroke-linecap="round" />
+  <rect x="350" y="460" width="22" height="60" rx="8" fill="#1036E8" stroke="#121316" stroke-width="5" />
+  <rect x="628" y="460" width="22" height="60" rx="8" fill="#1036E8" stroke="#121316" stroke-width="5" />
+
+  <!-- Glasses: Architectural Minimalist Rectangles -->
+  <rect x="420" y="450" width="55" height="34" rx="4" fill="none" stroke="#121316" stroke-width="6" />
+  <rect x="525" y="450" width="55" height="34" rx="4" fill="none" stroke="#121316" stroke-width="6" />
+  <line x1="475" y1="467" x2="525" y2="467" stroke="#121316" stroke-width="6" />
+  <!-- Confident Gaze Pupils -->
+  <circle cx="452" cy="467" r="6" fill="#121316" />
+  <circle cx="557" cy="467" r="6" fill="#121316" />
+
+  <!-- Nose & Smile Line -->
+  <path d="M500 480 L495 520 H510" stroke="#121316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M475 555 C490 570 515 570 530 555" stroke="#121316" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Graphic Foreground Tech Element: Monolithic Keyboard & Display Strip -->
+  <rect x="220" y="780" width="520" height="90" fill="#121316" stroke="#121316" stroke-width="4" />
+  <!-- Display Strip -->
+  <rect x="235" y="795" width="490" height="60" fill="#1036E8" />
+  <text x="255" y="833" font-family="'Space Mono', monospace" font-size="18" font-weight="700" fill="#D4FF00" letter-spacing="2">&gt; ABYLAU.STUDIO // REACT CORE ONLINE</text>
+
+  <!-- Circular Tactile Rubber Stamp: "APPROVED CRAFT" -->
+  <g transform="translate(130, 710) rotate(-12)">
+    <circle cx="60" cy="60" r="56" fill="#F4F1EA" stroke="#FF4400" stroke-width="5" stroke-dasharray="8 4" />
+    <circle cx="60" cy="60" r="48" fill="none" stroke="#FF4400" stroke-width="2" />
+    <text x="60" y="55" font-family="'Space Mono', monospace" font-size="12" font-weight="900" fill="#FF4400" text-anchor="middle" letter-spacing="1">VERIFIED</text>
+    <text x="60" y="74" font-family="'Space Mono', monospace" font-size="14" font-weight="900" fill="#FF4400" text-anchor="middle" letter-spacing="2">REACT</text>
+  </g>
+
+  <!-- Bottom Technical Legend -->
+  <line x1="32" y1="910" x2="768" y2="910" stroke="#121316" stroke-width="2" />
+  <text x="50" y="942" font-family="'Space Mono', monospace" font-size="13" font-weight="700" fill="#121316">SERIES: FRONTEND ARCHITECTURE</text>
+  <text x="750" y="942" font-family="'Space Mono', monospace" font-size="13" font-weight="700" fill="#121316" text-anchor="end">SYS.02 / 2026</text>
+</svg>
