@@ -5,22 +5,23 @@
 
 export const DEVELOPER = {
   name: "ABYLAU",
-  title: "FRONTEND DEVELOPER",
+  title: "CYBERSECURITY & FRONTEND",
   location: "ALMATY, KAZAKHSTAN",
   coordinates: "43.2389° N, 76.8897° E",
   year: "2026",
-  subline: "React Developer · Frontend / Interfaces · Student & Builder",
-  status: "Open to interesting projects.",
+  subline: "Security Operations · Automation · React / UI Systems · Student & Builder",
+  status: "Exploring SOC Analysis & UI Engineering.",
   heroIntro:
-    "I’m Abylau, a frontend developer from Almaty. I build React interfaces, experiment with web ideas, and try to make each project cleaner than the previous one.",
+    "I’m Abylau, a tech enthusiast from Almaty diving deep into cybersecurity, automation, and aspiring towards a SOC Analyst path. I use frontend and AI tools to turn complex data into clean, functional interfaces.",
   aboutText:
-    "I’m a frontend developer based in Almaty, focused on React and modern web interfaces. I like breaking larger interfaces into small, reusable components and learning how good structure improves both the code and the final experience.",
+    "I’m based in Almaty with a strong passion for cybersecurity and workflow automation, currently working towards becoming a SOC Analyst. I love developing automated scripts, monitoring pipelines, and backend logic that solve real-world operational problems.",
   aboutSubtext:
-    "My focus is on direct, understandable code: clean JSX, structured CSS Grid compositions, and solid responsive behavior without bloated UI dependencies. I treat frontend development as both a technical craft and an editorial layout discipline.",
+    "I actively explore frontend development and React because I want to understand systems end-to-end rather than staying confined strictly to the backend. By leveraging modern AI workflows, I can craft sharp, responsive interfaces to present and interact with technical data beautifully.",
   facts: [
     { label: "BASE", value: "Almaty, Kazakhstan" },
-    { label: "FOCUS", value: "React / JavaScript / Frontend" },
-    { label: "CURRENTLY", value: "Learning, building and improving" },
+    { label: "FOCUS", value: "Cybersecurity · Automation · SOC Analysis" },
+    { label: "FRONTEND", value: "React · Modern UI · AI-assisted Workflows" },
+    { label: "CURRENTLY", value: "Automating workflows & learning security operations" },
   ],
 };
 
@@ -48,7 +49,7 @@ export const PROJECTS = [
   {
     id: "03",
     title: "Marketplace Price & Stock Engine",
-    category: "Analytics Tool",
+    category: "Automation & Analytics",
     description:
       "Automated verification and analytics tool for tracking marketplace inventory, stock levels, and competitor price intelligence.",
     tech: ["React", "REST API", "Vite"],
@@ -59,24 +60,24 @@ export const PROJECTS = [
 
 export const SKILL_CATEGORIES = [
   {
-    category: "LANGUAGES",
+    category: "LANGUAGES & SCRIPTS",
     index: "01",
-    skills: ["JavaScript (ES6+)", "HTML5 Semantics", "CSS3 / Modern CSS", "TypeScript"],
+    skills: ["JavaScript (ES6+)", "Python", "HTML5 & CSS3", "Bash / Shell"],
   },
   {
-    category: "FRAMEWORKS & LIBS",
+    category: "FRONTEND & UI",
     index: "02",
-    skills: ["React 19", "React Hooks", "Vite", "Component Primitives"],
+    skills: ["React 19", "Vite", "AI-assisted UI", "Component Architecture"],
+  },
+  {
+    category: "SECURITY & OPS",
+    index: "03",
+    skills: ["SOC Analysis Core", "Process Automation", "Log Analysis", "Network Basics"],
   },
   {
     category: "TOOLS & WORKFLOW",
-    index: "03",
-    skills: ["Git & GitHub", "npm / Packages", "GitHub Pages", "VS Code"],
-  },
-  {
-    category: "INTERESTS & FOCUS",
     index: "04",
-    skills: ["Responsive Systems", "CSS Grid & Flexbox", "UI Architecture", "Accessibility (A11y)"],
+    skills: ["Git & GitHub", "VS Code", "npm / Packages", "GitHub Pages"],
   },
 ];
 

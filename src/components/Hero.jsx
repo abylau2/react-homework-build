@@ -52,7 +52,7 @@ export default function Hero({ developer, links }) {
           <figcaption className="figure-caption">
             <span className="figure-tag">FIG. 01</span>
             <span className="figure-caption-text">
-              Abylau — Frontend Developer / Almaty, KZ
+              Abylau — Security &amp; Frontend / Almaty, KZ
             </span>
           </figcaption>
         </aside>
