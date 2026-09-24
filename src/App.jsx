@@ -1,730 +1,353 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
+// ============================================================================
+// 1. ДАННЫЕ ПРОФИЛЯ (Легко редактировать и объяснять)
+// ============================================================================
 const PROFILE = {
   name: "Abylau",
-  tagline: "Frontend Engineer & React Crafter",
-  location: "Planet Earth (Almaty, KZ)",
-  github: "https://github.com/abylau2",
-  githubHandle: "abylau2",
-  status: "Building reactive systems",
-};
-
-const SKILLS = [
-  { name: "React 19", level: "Advanced", category: "frontend", icon: "⚛️" },
-  { name: "JavaScript ESNext", level: "Strong", category: "frontend", icon: "⚡" },
-  { name: "TypeScript", level: "Intermediate", category: "frontend", icon: "📘" },
-  { name: "HTML5 & Semantic UI", level: "Mastery", category: "frontend", icon: "🌐" },
-  { name: "Modern CSS / Bento UI", level: "Advanced", category: "frontend", icon: "🎨" },
-  { name: "Vite & Tooling", level: "Proficient", category: "tools", icon: "⚡" },
-  { name: "Git & GitHub CI", level: "Daily Driver", category: "tools", icon: "🐙" },
-  { name: "REST APIs & JSON", level: "Advanced", category: "core", icon: "🔌" },
-  { name: "Performance & A11y", level: "High Focus", category: "core", icon: "🚀" },
-];
-
-const PROJECTS = [
-  {
-    id: "01",
-    title: "Marketplace Data & Price Engine",
-    desc: "Automated analysis tool for real-time price monitoring, competitor tracking, and supply validation.",
-    tags: ["React", "Python", "REST API", "Data Viz"],
-    highlight: "Real-world utility",
-    link: "https://github.com/abylau2",
-  },
-  {
-    id: "02",
-    title: "Interactive Bento Dev Studio",
-    desc: "A modular, responsive developer showcase with built-in interactive terminal and live diagnostics.",
-    tags: ["React", "Vite", "CSS Grid", "State Hooks"],
-    highlight: "Component architecture",
-    link: "https://github.com/abylau2/react-homework-build",
-  },
-  {
-    id: "03",
-    title: "Cyber CLI Command Center",
-    desc: "Terminal emulation component inside web apps with command parsing, history, and theme switches.",
-    tags: ["React Hooks", "CLI Simulation", "A11y"],
-    highlight: "Micro-interactions",
-    link: "https://github.com/abylau2",
-  },
-];
-
-const CODE_TABS = {
-  profile: {
-    filename: "engineer.ts",
-    code: `interface Developer {
-  name: string;
-  role: string;
-  location: string;
-  mindset: string[];
-}
-
-export const abylau: Developer = {
-  name: "Abylau",
-  role: "Frontend Engineer",
+  title: "Frontend Developer & React Enthusiast",
+  bio: "Привет! Я начинающий фронтенд-разработчик. Создаю адаптивные, быстрые и визуально приятные веб-приложения на React. Увлекаюсь современным веб-дизайном, компонентным подходом и чистым кодом.",
   location: "Planet Earth 🌍 (Almaty, KZ)",
-  mindset: [
-    "Components should do one job flawlessly",
-    "Clean code over clever obfuscation",
-    "Micro-interactions turn products into joy"
-  ]
-};`,
-  },
-  philosophy: {
-    filename: "principles.md",
-    code: `# Engineering Philosophy
-
-1. **Pixel & Code Harmony**
-   Great interfaces feel inevitable. Layout, contrast,
-   and spacing are not decorations — they communicate structure.
-
-2. **React Component Thinking**
-   Treat components as composable lego bricks. Keep state
-   local where possible, hoist only when necessary.
-
-3. **Privacy First**
-   Zero sensitive personal data exposed. Transparent public GitHub code.`,
-  },
-  stack: {
-    filename: "stack.json",
-    code: `{
-  "core": ["React 19", "JavaScript (ES2024)", "Vite"],
-  "styling": ["CSS Grid / Flexbox", "CSS Custom Properties", "Glassmorphism"],
-  "workflow": ["Git", "GitHub Pages", "Automated Builds"],
-  "focus": "High performance & responsive craft"
-}`,
-  },
+  github: "https://github.com/abylau2",
+  githubUsername: "abylau2",
+  status: "Открыт к новым проектам и практике",
 };
 
-function Navbar({ activeTheme, onThemeChange, onScrollTo }) {
-  return (
-    <header className="site-header">
-      <div className="brand" onClick={() => onScrollTo("hero")}>
-        <span className="brand-bracket">[</span>
-        <span className="brand-name">A2</span>
-        <span className="brand-bracket">]</span>
-        <span className="brand-dot" />
-      </div>
+// Список навыков с категориями для фильтрации
+const SKILLS = [
+  { id: 1, name: "React", category: "frontend", level: "Изучаю хуки и компоненты", icon: "⚛️" },
+  { id: 2, name: "JavaScript (ES6+)", category: "frontend", level: "Базовый синтаксис, массивы, async", icon: "⚡" },
+  { id: 3, name: "HTML5 & Семантика", category: "frontend", level: "Доступная и чистая разметка", icon: "🌐" },
+  { id: 4, name: "CSS3 & Flex/Grid", category: "frontend", level: "Адаптивная верстка, анимации", icon: "🎨" },
+  { id: 5, name: "Vite", category: "tools", level: "Быстрая сборка проектов", icon: "⚡" },
+  { id: 6, name: "Git & GitHub", category: "tools", level: "Ветвление, коммиты, деплой", icon: "🐙" },
+  { id: 7, name: "REST API", category: "tools", level: "Запросы fetch и работа с JSON", icon: "🔌" },
+  { id: 8, name: "Bento UI Design", category: "design", level: "Современные модульные интерфейсы", icon: "🍱" },
+];
 
-      <nav className="nav-links" aria-label="Primary navigation">
-        <button type="button" onClick={() => onScrollTo("about")}>About</button>
-        <button type="button" onClick={() => onScrollTo("terminal")}>Terminal</button>
-        <button type="button" onClick={() => onScrollTo("skills")}>Stack</button>
-        <button type="button" onClick={() => onScrollTo("projects")}>Projects</button>
-        <button type="button" onClick={() => onScrollTo("contact")}>Contact</button>
+// Несколько фактов в секцию "Обо мне"
+const FACTS = [
+  { label: "Цель", value: "Стать сильным React-разработчиком", icon: "🎯" },
+  { label: "Подход", value: "Практика через реальный код каждый день", icon: "💻" },
+  { label: "Локация", value: PROFILE.location, icon: "📍" },
+  { label: "Приватность", value: "Без личных номеров и адресов (Safe Profile)", icon: "🔒" },
+];
+
+// ============================================================================
+// 2. КОМПОНЕНТ: HEADER (Шапка сайта с навигацией и сменой темы)
+// ============================================================================
+function Header({ theme, onToggleTheme }) {
+  return (
+    <header className="navbar">
+      <a href="#hero" className="brand-logo">
+        <span className="bracket">&lt;</span>
+        <span className="brand-text">Abylau</span>
+        <span className="bracket">/&gt;</span>
+      </a>
+
+      <nav className="nav-menu" aria-label="Основная навигация">
+        <a href="#about">Обо мне</a>
+        <a href="#skills">Навыки</a>
+        <a href="#contact">Контакты</a>
       </nav>
 
-      <div className="nav-actions">
-        <div className="theme-pills" role="radiogroup" aria-label="Accent color theme">
-          <button
-            type="button"
-            className={`pill-cyan ${activeTheme === "cyan" ? "active" : ""}`}
-            onClick={() => onThemeChange("cyan")}
-            title="Cyber Cyan Theme"
-            aria-label="Cyan theme"
-          />
-          <button
-            type="button"
-            className={`pill-violet ${activeTheme === "violet" ? "active" : ""}`}
-            onClick={() => onThemeChange("violet")}
-            title="Electric Violet Theme"
-            aria-label="Violet theme"
-          />
-          <button
-            type="button"
-            className={`pill-emerald ${activeTheme === "emerald" ? "active" : ""}`}
-            onClick={() => onThemeChange("emerald")}
-            title="Matrix Emerald Theme"
-            aria-label="Emerald theme"
-          />
-        </div>
+      <div className="header-actions">
+        {/* Кнопка смены цветовой темы */}
+        <button
+          type="button"
+          className="btn-theme-toggle"
+          onClick={onToggleTheme}
+          title="Сменить тему"
+        >
+          {theme === "neon-cyan" ? "🌙 Неон" : "💜 Фиолетовый"}
+        </button>
 
         <a
           href={PROFILE.github}
           target="_blank"
           rel="noreferrer"
-          className="btn-github-nav"
+          className="btn-github"
         >
-          <span>GitHub</span>
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-            <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
-          </svg>
+          GitHub ↗
         </a>
       </div>
     </header>
   );
 }
 
-function HeroBento({ onScrollTo }) {
-  const [timeString, setTimeString] = useState("");
+// ============================================================================
+// 3. КОМПОНЕНТ: HERO (Главный экран с именем, аватаром и интерактивным счетчиком)
+// ============================================================================
+function Hero() {
+  // Простой и понятный интерактив через useState (лайки/приветствия)
+  const [likes, setLikes] = useState(42);
+  const [hasLiked, setHasLiked] = useState(false);
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTimeString(
-        now.toLocaleTimeString("en-GB", {
-          timeZone: "Asia/Almaty",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })
-      );
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleLike = () => {
+    if (!hasLiked) {
+      setLikes(likes + 1);
+      setHasLiked(true);
+    }
+  };
 
   return (
-    <section className="bento-hero" id="hero">
-      {/* Primary Card: Developer Title */}
-      <div className="card bento-card-main">
-        <div className="status-badge">
-          <span className="pulse-dot" />
-          <span>Available for Frontend & React Projects</span>
+    <section className="hero-section" id="hero">
+      <div className="hero-content card">
+        <div className="status-pill">
+          <span className="status-dot" />
+          <span>{PROFILE.status}</span>
         </div>
 
-        <h1 className="hero-heading">
-          Engineering intuitive interfaces with{" "}
-          <span className="gradient-text">React &amp; Modern Web Craft.</span>
+        <h1 className="hero-title">
+          Привет, я <span className="highlight-text">{PROFILE.name}</span>
         </h1>
 
-        <p className="hero-subtext">
-          Hi, I am <strong>{PROFILE.name}</strong>. I transform ideas into high-performance,
-          responsive single-page applications with clean component architecture and
-          delightful micro-interactions.
-        </p>
+        <p className="hero-subtitle">{PROFILE.title}</p>
 
-        <div className="hero-cta-group">
+        <p className="hero-desc">{PROFILE.bio}</p>
+
+        <div className="hero-buttons">
+          <a href="#about" className="btn-primary">
+            Узнать больше ↓
+          </a>
+          <a href="#contact" className="btn-secondary">
+            Связаться
+          </a>
+          {/* Интерактивная кнопка с понятным состоянием */}
           <button
             type="button"
-            className="btn-primary"
-            onClick={() => onScrollTo("terminal")}
+            className={`btn-reaction ${hasLiked ? "reacted" : ""}`}
+            onClick={handleLike}
           >
-            <span className="btn-icon">&gt;_</span>
-            Launch Terminal
+            {hasLiked ? "🎉 Спасибо!" : "👋 Поприветствовать"} ({likes})
           </button>
+        </div>
+      </div>
+
+      <div className="hero-avatar-card card">
+        <div className="avatar-wrapper">
+          <img
+            src={`${import.meta.env.BASE_URL}abylau-avatar.svg`}
+            alt={`Иллюстрация разработчика ${PROFILE.name}`}
+            className="avatar-image"
+          />
+        </div>
+        <div className="avatar-meta">
+          <h3>{PROFILE.name}</h3>
+          <p>{PROFILE.location}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// 4. КОМПОНЕНТ: ABOUT (Секция "Обо мне" с карточками фактов)
+// ============================================================================
+function About() {
+  return (
+    <section className="section about-section" id="about">
+      <div className="section-header">
+        <span className="section-badge">01 / Инфо</span>
+        <h2>Обо мне (About Me)</h2>
+        <p>Кратко о моих целях, философии обучения и подходе к разработке.</p>
+      </div>
+
+      <div className="about-grid">
+        <div className="card about-story">
+          <h3>Мой путь в веб-разработку</h3>
+          <p>
+            Я изучаю React, потому что мне нравится идея разбивать сложные интерфейсы
+            на простые, понятные и независимые компоненты. Это делает код аккуратным,
+            а разработку — удобной и логичной.
+          </p>
+          <p>
+            Сейчас активно практикуюсь в работе с состоянием (<strong>useState</strong>),
+            пропсами, списками данных через <strong>.map()</strong> и современной
+            адаптивной версткой на CSS Grid и Flexbox.
+          </p>
+          <div className="principles-tags">
+            <span className="tag">Чистый код</span>
+            <span className="tag">Компонентный подход</span>
+            <span className="tag">Любознательность</span>
+          </div>
+        </div>
+
+        <div className="facts-grid">
+          {FACTS.map((fact, index) => (
+            <div key={index} className="card fact-card">
+              <span className="fact-icon">{fact.icon}</span>
+              <div className="fact-info">
+                <span className="fact-label">{fact.label}</span>
+                <strong className="fact-value">{fact.value}</strong>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// 5. КОМПОНЕНТ: SKILLS (Секция навыков с фильтрацией по категориям)
+// ============================================================================
+function Skills() {
+  // useState для фильтрации — очень простой паттерн, легко объяснить преподавателю
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const categories = [
+    { key: "all", label: "Все навыки" },
+    { key: "frontend", label: "Frontend" },
+    { key: "tools", label: "Инструменты" },
+    { key: "design", label: "Дизайн" },
+  ];
+
+  // Фильтруем массив: если "all" — отдаем всё, иначе только совпадения
+  const displayedSkills =
+    selectedCategory === "all"
+      ? SKILLS
+      : SKILLS.filter((skill) => skill.category === selectedCategory);
+
+  return (
+    <section className="section skills-section" id="skills">
+      <div className="section-header">
+        <span className="section-badge">02 / Стек</span>
+        <h2>Мои навыки (Skills)</h2>
+        <p>Технологии и инструменты, которые я использую в своих проектах.</p>
+      </div>
+
+      {/* Кнопки переключения фильтра */}
+      <div className="filter-buttons">
+        {categories.map((cat) => (
           <button
+            key={cat.key}
             type="button"
-            className="btn-secondary"
-            onClick={() => onScrollTo("about")}
+            className={`filter-btn ${selectedCategory === cat.key ? "active" : ""}`}
+            onClick={() => setSelectedCategory(cat.key)}
           >
-            Explore Profile
+            {cat.label}
           </button>
+        ))}
+      </div>
+
+      {/* Сетка карточек с навыками */}
+      <div className="skills-grid">
+        {displayedSkills.map((skill) => (
+          <div key={skill.id} className="card skill-card">
+            <span className="skill-icon">{skill.icon}</span>
+            <div className="skill-details">
+              <h4>{skill.name}</h4>
+              <p>{skill.level}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// 6. КОМПОНЕНТ: CONTACT (Секция контактов без приватных данных)
+// ============================================================================
+function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyGithub = () => {
+    navigator.clipboard.writeText(PROFILE.github);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <section className="section contact-section" id="contact">
+      <div className="section-header">
+        <span className="section-badge">03 / Связь</span>
+        <h2>Контакты (Contact Info)</h2>
+        <p>Безопасные контактные данные для связи и проверки задания.</p>
+      </div>
+
+      <div className="card contact-card">
+        <div className="contact-text">
+          <h3>Открыт к сотрудничеству и код-ревью</h3>
+          <p>
+            В соответствии с правилами приватности в задании, домашний адрес и
+            личный номер телефона не публикуются. Все учебные репозитории и код
+            открыты на моем профиле GitHub.
+          </p>
+
+          <div className="contact-items">
+            <div className="contact-item">
+              <span className="item-label">Локация:</span>
+              <span className="item-val">{PROFILE.location}</span>
+            </div>
+            <div className="contact-item">
+              <span className="item-label">GitHub:</span>
+              <span className="item-val">@{PROFILE.githubUsername}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="contact-actions">
           <a
             href={PROFILE.github}
             target="_blank"
             rel="noreferrer"
-            className="btn-ghost"
+            className="btn-primary btn-full"
           >
-            GitHub ↗
+            Перейти в GitHub Профиль ↗
           </a>
-        </div>
-      </div>
-
-      {/* Visual Avatar Card */}
-      <div className="card bento-card-avatar">
-        <div className="avatar-header">
-          <span className="badge-tag">Developer ID</span>
-          <span className="id-number">#A2-2026</span>
-        </div>
-        <div className="avatar-frame">
-          <img
-            src={`${import.meta.env.BASE_URL}abylau-avatar.svg`}
-            alt="Futuristic illustrated avatar of Abylau"
-            className="avatar-img"
-          />
-        </div>
-        <div className="avatar-caption">
-          <strong>{PROFILE.name}</strong>
-          <span>{PROFILE.tagline}</span>
-        </div>
-      </div>
-
-      {/* Metrics Row */}
-      <div className="mini-container">
-        <div className="card bento-card-mini">
-          <span className="mini-label">Almaty, KZ (GMT+5)</span>
-          <div className="mini-metric mono-font">{timeString || "12:00:00"}</div>
-          <p className="mini-subtext">Local system clock in sync</p>
-        </div>
-
-        <div className="card bento-card-mini">
-          <span className="mini-label">React Architecture</span>
-          <div className="mini-metric gradient-text">8+ Modules</div>
-          <p className="mini-subtext">Modular, decoupled & typed</p>
-        </div>
-
-        <div className="card bento-card-mini">
-          <span className="mini-label">Privacy Guarantee</span>
-          <div className="mini-metric text-emerald">Verified Safe</div>
-          <p className="mini-subtext">No sensitive data · Planet Earth</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Terminal() {
-  const [history, setHistory] = useState([
-    { type: "system", text: "Welcome to AbylauOS Dev Terminal v2.4" },
-    { type: "system", text: "Type 'help' or click quick commands below to explore." },
-  ]);
-  const [inputVal, setInputVal] = useState("");
-  const [isMatrix, setIsMatrix] = useState(false);
-  const terminalEndRef = useRef(null);
-
-  const executeCommand = (cmdText) => {
-    const raw = cmdText.trim();
-    if (!raw) return;
-
-    const parts = raw.split(" ");
-    const cmd = parts[0].toLowerCase();
-    const arg = parts.slice(1).join(" ");
-
-    const newEntries = [{ type: "command", text: `$ ${raw}` }];
-
-    switch (cmd) {
-      case "help":
-        newEntries.push({
-          type: "output",
-          text: `Available commands:
-  • about       - Read Abylau's bio & development background
-  • skills      - Display technical proficiency matrix
-  • projects    - View selected builds & GitHub links
-  • contact     - Show safe contact channels & GitHub
-  • matrix      - Toggle matrix cyber mode
-  • sudo hire   - Run superuser hiring protocol ⚡
-  • clear       - Wipe terminal screen output`,
-        });
-        break;
-      case "about":
-        newEntries.push({
-          type: "output",
-          text: `[ABYLAU / FRONTEND ENGINEER]
-Focus: React ecosystem, responsive design systems, clean code.
-Current status: Building reactive web apps & learning in public.
-Location: Planet Earth 🌍 (Almaty, KZ).
-Privacy: Safe profile for coursework review.`,
-        });
-        break;
-      case "skills":
-        newEntries.push({
-          type: "output",
-          text: `CORE SKILLS:
-[✓] React 19 (Hooks, Context, State, Fast Refresh)
-[✓] JavaScript ESNext (Async/Await, Arrays, DOM)
-[✓] Modern CSS (Grid, Flex, Variables, Responsive)
-[✓] Vite & Build Pipeline (Zero-config, fast HMR)
-[✓] Git & GitHub Pages Automation`,
-        });
-        break;
-      case "projects":
-        newEntries.push({
-          type: "output",
-          text: `FEATURED PROJECTS:
-1. Kaspi Data & Price Intelligence Tool (Automated checks)
-2. Interactive Bento Studio (This React SPA)
-3. Cyber Terminal Simulation Module
-Repository: https://github.com/abylau2`,
-        });
-        break;
-      case "contact":
-        newEntries.push({
-          type: "output",
-          text: `CONTACT & LINKS:
-GitHub:   https://github.com/abylau2
-Handle:   @abylau2
-Status:   Open for collaboration & code reviews
-Location: Planet Earth 🌍`,
-        });
-        break;
-      case "matrix":
-        setIsMatrix((prev) => !prev);
-        newEntries.push({
-          type: "output",
-          text: `[CYBER MATRIX] Mode toggled. Welcome to the construct.`,
-        });
-        break;
-      case "sudo":
-        if (arg.toLowerCase() === "hire") {
-          newEntries.push({
-            type: "success",
-            text: `[ROOT ACCESS GRANTED] 🚀
-Congratulations! You've unlocked top-tier React craftsmanship.
-Status: Offer accepted. Let's build extraordinary software together!`,
-          });
-        } else {
-          newEntries.push({
-            type: "error",
-            text: `sudo: unknown privilege request '${arg}'. Try: sudo hire`,
-          });
-        }
-        break;
-      case "clear":
-        setHistory([]);
-        setInputVal("");
-        return;
-      default:
-        newEntries.push({
-          type: "error",
-          text: `Command not found: '${cmd}'. Type 'help' for available commands.`,
-        });
-        break;
-    }
-
-    setHistory((prev) => [...prev, ...newEntries]);
-    setInputVal("");
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      executeCommand(inputVal);
-    }
-  };
-
-  useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [history]);
-
-  return (
-    <section className={`terminal-section ${isMatrix ? "matrix-active" : ""}`} id="terminal">
-      <div className="section-head">
-        <span className="section-tag">Interactive Feature</span>
-        <h2>Terminal Command Center</h2>
-        <p>A simulated developer environment built right inside React.</p>
-      </div>
-
-      <div className="terminal-window">
-        <div className="terminal-titlebar">
-          <div className="traffic-lights">
-            <span className="dot dot-red" />
-            <span className="dot dot-yellow" />
-            <span className="dot dot-green" />
-          </div>
-          <span className="terminal-title">abylau@studio: ~/interactive-shell</span>
-          <div className="terminal-status-chip">bash · active</div>
-        </div>
-
-        <div className="terminal-body">
-          {history.map((item, idx) => (
-            <div key={idx} className={`term-line term-${item.type}`}>
-              <pre>{item.text}</pre>
-            </div>
-          ))}
-          <div ref={terminalEndRef} />
-        </div>
-
-        <div className="terminal-prompt-bar">
-          <span className="prompt-symbol">abylau&gt;</span>
-          <input
-            type="text"
-            className="terminal-input"
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Type 'help', 'skills', 'about', 'sudo hire'..."
-            aria-label="Terminal command input"
-          />
           <button
             type="button"
-            className="btn-send-cmd"
-            onClick={() => executeCommand(inputVal)}
+            className="btn-secondary btn-full"
+            onClick={handleCopyGithub}
           >
-            Run ↵
+            {copied ? "✓ Ссылка скопирована!" : "Скопировать ссылку на GitHub"}
           </button>
         </div>
-
-        <div className="terminal-shortcuts">
-          <span className="shortcuts-label">Quick Actions:</span>
-          {["help", "about", "skills", "projects", "contact", "sudo hire", "matrix", "clear"].map(
-            (shortcut) => (
-              <button
-                key={shortcut}
-                type="button"
-                className="chip-shortcut"
-                onClick={() => executeCommand(shortcut)}
-              >
-                {shortcut}
-              </button>
-            )
-          )}
-        </div>
       </div>
     </section>
   );
 }
 
-function AboutBento() {
-  const [activeTab, setActiveTab] = useState("profile");
-
+// ============================================================================
+// 7. КОМПОНЕНТ: FOOTER (Подвал)
+// ============================================================================
+function Footer() {
   return (
-    <section className="about-section" id="about">
-      <div className="section-head">
-        <span className="section-tag">01 / Profile</span>
-        <h2>About The Developer</h2>
-        <p>A closer look into engineering philosophy, code habits, and craft.</p>
-      </div>
-
-      <div className="about-grid">
-        <div className="about-narrative card">
-          <h3>Focused on Clarity &amp; Craft</h3>
-          <p>
-            I am a developer driven by the magic of turning abstract concepts into
-            fast, intuitive, and responsive user experiences. When building interfaces,
-            I place high value on structural semantics, readable code, and reliable state
-            management.
-          </p>
-          <p>
-            Whether it’s architecting React components with clean props, parsing API datasets,
-            or fine-tuning CSS layouts for micro-screens, I build with care and curiosity.
-          </p>
-
-          <div className="highlight-pill-row">
-            <span className="h-pill">⚡ Fast Learner</span>
-            <span className="h-pill">📐 Component Thinker</span>
-            <span className="h-pill">🛡️ Privacy Conscious</span>
-            <span className="h-pill">🌍 Planet Earth Citizen</span>
-          </div>
-        </div>
-
-        <div className="about-code-card card">
-          <div className="code-tabs">
-            {Object.keys(CODE_TABS).map((tabKey) => (
-              <button
-                key={tabKey}
-                type="button"
-                className={`code-tab ${activeTab === tabKey ? "active" : ""}`}
-                onClick={() => setActiveTab(tabKey)}
-              >
-                {CODE_TABS[tabKey].filename}
-              </button>
-            ))}
-          </div>
-          <div className="code-content">
-            <pre>
-              <code>{CODE_TABS[activeTab].code}</code>
-            </pre>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TechMatrix() {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredSkills =
-    activeCategory === "all"
-      ? SKILLS
-      : SKILLS.filter((s) => s.category === activeCategory);
-
-  return (
-    <section className="skills-section" id="skills">
-      <div className="section-head">
-        <span className="section-tag">02 / Tech Stack</span>
-        <h2>Skills &amp; Capabilities</h2>
-        <p>Tools and technologies mastered through practice and real-world experiments.</p>
-      </div>
-
-      <div className="category-filter">
-        {["all", "frontend", "tools", "core"].map((cat) => (
-          <button
-            key={cat}
-            type="button"
-            className={`filter-btn ${activeCategory === cat ? "active" : ""}`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            {cat.toUpperCase()}
-          </button>
-        ))}
-      </div>
-
-      <div className="skills-grid">
-        {filteredSkills.map((skill) => (
-          <div key={skill.name} className="skill-card card">
-            <span className="skill-icon">{skill.icon}</span>
-            <div className="skill-info">
-              <h4>{skill.name}</h4>
-              <span className="skill-level">{skill.level}</span>
-            </div>
-            <span className="skill-cat-tag">{skill.category}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ProjectGrid() {
-  return (
-    <section className="projects-section" id="projects">
-      <div className="section-head">
-        <span className="section-tag">03 / Projects</span>
-        <h2>Featured Work &amp; Experiments</h2>
-        <p>Selected applications and repositories demonstrating practical engineering skills.</p>
-      </div>
-
-      <div className="projects-grid">
-        {PROJECTS.map((proj) => (
-          <article key={proj.id} className="project-card card">
-            <div className="project-top">
-              <span className="project-num">{proj.id}</span>
-              <span className="project-highlight">{proj.highlight}</span>
-            </div>
-            <h3>{proj.title}</h3>
-            <p>{proj.desc}</p>
-            <div className="project-tags">
-              {proj.tags.map((t) => (
-                <span key={t} className="proj-tag">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <a
-              href={proj.link}
-              target="_blank"
-              rel="noreferrer"
-              className="project-link"
-            >
-              View Repository ↗
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ContactCard() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(PROFILE.github);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
-
-  return (
-    <section className="contact-section" id="contact">
-      <div className="section-head">
-        <span className="section-tag">04 / Connect</span>
-        <h2>Let's Connect</h2>
-        <p>Open for questions, feedback, and technical discussions.</p>
-      </div>
-
-      <div className="contact-bento card">
-        <div className="contact-meta">
-          <div className="signal-online">
-            <span className="beacon" />
-            <span>Connection open</span>
-          </div>
-          <h3>Public Developer Profile</h3>
-          <p>
-            All projects, code samples, and experiments are hosted openly on GitHub.
-            In compliance with assignment privacy standards, private phone numbers
-            and home addresses are strictly omitted.
-          </p>
-
-          <div className="contact-details-list">
-            <div className="detail-item">
-              <span className="detail-label">Location:</span>
-              <span className="detail-val">{PROFILE.location}</span>
-            </div>
-            <div className="detail-item">
-              <span className="detail-label">Platform:</span>
-              <span className="detail-val">GitHub Public Workspace</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="contact-action-box">
-          <div className="github-highlight-card">
-            <div className="gh-icon">🐙</div>
-            <div className="gh-meta">
-              <strong>github.com/{PROFILE.githubHandle}</strong>
-              <span>Public Repositories &amp; Source Code</span>
-            </div>
-          </div>
-
-          <div className="contact-buttons-row">
-            <a
-              href={PROFILE.github}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary btn-full"
-            >
-              Visit GitHub Profile ↗
-            </a>
-            <button
-              type="button"
-              className="btn-secondary btn-full"
-              onClick={handleCopy}
-            >
-              {copied ? "✓ Copied to Clipboard!" : "Copy GitHub Link"}
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer({ onScrollTo }) {
-  return (
-    <footer className="site-footer">
+    <footer className="footer">
       <div className="footer-content">
-        <div className="footer-left">
-          <span className="brand-name">[A2] Abylau</span>
-          <p>© {new Date().getFullYear()} — Built with React &amp; Vite</p>
-        </div>
-        <div className="footer-center">
-          <span>Self-Promotional SPA · Course Submission</span>
-        </div>
-        <div className="footer-right">
-          <button
-            type="button"
-            className="btn-back-to-top"
-            onClick={() => onScrollTo("hero")}
-          >
-            Back to Top ↑
-          </button>
-        </div>
+        <span>© {new Date().getFullYear()} {PROFILE.name} · React SPA Homework</span>
+        <a href="#hero" className="back-to-top">
+          Наверх ↑
+        </a>
       </div>
     </footer>
   );
 }
 
+// ============================================================================
+// ГЛАВНЫЙ КОМПОНЕНТ: APP (Сборка всего приложения)
+// ============================================================================
 export default function App() {
-  const [activeTheme, setActiveTheme] = useState("cyan");
+  const [theme, setTheme] = useState("neon-cyan");
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+  const toggleTheme = () => {
+    setTheme(theme === "neon-cyan" ? "neon-purple" : "neon-cyan");
   };
 
   return (
-    <div className={`app-root theme-${activeTheme}`}>
-      <div className="ambient-glow glow-1" />
-      <div className="ambient-glow glow-2" />
-
-      <div className="container">
-        <Navbar
-          activeTheme={activeTheme}
-          onThemeChange={setActiveTheme}
-          onScrollTo={scrollTo}
-        />
+    <div className={`app-container theme-${theme}`}>
+      <div className="glow-effect" />
+      <div className="content-wrapper">
+        <Header theme={theme} onToggleTheme={toggleTheme} />
         <main>
-          <HeroBento onScrollTo={scrollTo} />
-          <Terminal />
-          <AboutBento />
-          <TechMatrix />
-          <ProjectGrid />
-          <ContactCard />
+          <Hero />
+          <About />
+          <Skills />
+          <Contact />
         </main>
-        <Footer onScrollTo={scrollTo} />
+        <Footer />
       </div>
     </div>
   );
