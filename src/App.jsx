@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 const profile = {
-  name: "Nazerke",
-  role: "Frontend learner & thoughtful interface maker",
+  name: "Abylau2",
   github: "https://github.com/abylau2",
 };
 
@@ -38,11 +37,11 @@ function ArrowIcon() {
   );
 }
 
-function Header({ theme, onToggleTheme }) {
+function Header({ theme, xray, onToggleTheme, onToggleXray }) {
   return (
     <header className="site-header">
-      <a className="wordmark" href="#top" aria-label="Nazerke — back to top">
-        NZ<span>/02</span>
+      <a className="wordmark" href="#top" aria-label="Abylau2 — back to top">
+        AB<span>/02</span>
       </a>
 
       <nav aria-label="Main navigation">
@@ -51,17 +50,28 @@ function Header({ theme, onToggleTheme }) {
         <a href="#contact">Contact</a>
       </nav>
 
-      <button className="theme-switch" type="button" onClick={onToggleTheme}>
-        <span className="theme-dot" aria-hidden="true" />
-        {theme === "paper" ? "Ink mode" : "Paper mode"}
-      </button>
+      <div className="header-actions">
+        <button
+          className="xray-switch"
+          type="button"
+          aria-pressed={xray}
+          onClick={onToggleXray}
+        >
+          <span aria-hidden="true">&lt;/&gt;</span>
+          React X-Ray
+        </button>
+        <button className="theme-switch" type="button" onClick={onToggleTheme}>
+          <span className="theme-dot" aria-hidden="true" />
+          {theme === "paper" ? "Ink mode" : "Paper mode"}
+        </button>
+      </div>
     </header>
   );
 }
 
 function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className="hero" aria-labelledby="hero-title" data-component="Hero">
       <div className="hero-copy">
         <div className="hero-meta">
           <span>Self portrait in React</span>
@@ -70,8 +80,8 @@ function Hero() {
 
         <p className="hero-kicker">Hello — my name is</p>
         <h1 id="hero-title" aria-label={profile.name}>
-          <span>Nazer</span>
-          <span className="outline-word">ke</span>
+          <span>Abylau</span>
+          <span className="outline-word">2</span>
         </h1>
 
         <div className="hero-bottom">
@@ -88,8 +98,8 @@ function Hero() {
       <figure className="portrait-card">
         <div className="portrait-label portrait-label-top">Work in progress</div>
         <img
-          src={`${import.meta.env.BASE_URL}nazerke-studio.svg`}
-          alt="Editorial illustration of Nazerke designing an interface at her desk"
+          src={`${import.meta.env.BASE_URL}abylau2-studio.svg`}
+          alt="Editorial illustration of Abylau2 designing an interface at a desk"
         />
         <figcaption>
           <span>Current mode</span>
@@ -105,7 +115,7 @@ function Hero() {
 
 function Marquee() {
   return (
-    <div className="marquee" aria-label="Design principles">
+    <div className="marquee" aria-label="Design principles" data-component="Marquee">
       <div>
         <span>Curiosity over perfection</span>
         <span className="marquee-cross" aria-hidden="true">+</span>
@@ -119,7 +129,7 @@ function Marquee() {
 
 function About() {
   return (
-    <section className="about" id="about" aria-labelledby="about-title">
+    <section className="about" id="about" aria-labelledby="about-title" data-component="About">
       <div className="section-heading">
         <span className="section-index">01 / About</span>
         <h2 id="about-title">A learner with an editor’s eye.</h2>
@@ -162,7 +172,7 @@ function LearningLab() {
   const note = labNotes[activeNote];
 
   return (
-    <section className="lab" id="lab" aria-labelledby="lab-title">
+    <section className="lab" id="lab" aria-labelledby="lab-title" data-component="LearningLab">
       <div className="lab-sidebar">
         <span className="section-index">02 / Lab notes</span>
         <h2 id="lab-title">What I am training now.</h2>
@@ -195,7 +205,7 @@ function LearningLab() {
           aria-labelledby={`lab-tab-${activeNote}`}
         >
           <div className="panel-bar">
-            <span>nazerke.lab</span>
+            <span>abylau2.lab</span>
             <span className="panel-status">active study</span>
           </div>
           <div className="panel-content" key={note.number}>
@@ -217,7 +227,7 @@ function LearningLab() {
 
 function Contact() {
   return (
-    <section className="contact" id="contact" aria-labelledby="contact-title">
+    <section className="contact" id="contact" aria-labelledby="contact-title" data-component="Contact">
       <div className="contact-signal" aria-hidden="true">
         <span />
         Signal open
@@ -245,8 +255,8 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer>
-      <span>© {new Date().getFullYear()} Nazerke</span>
+    <footer data-component="Footer">
+      <span>© {new Date().getFullYear()} {profile.name}</span>
       <span>Built from scratch with React</span>
       <a href="#top">Back to top ↑</a>
     </footer>
@@ -255,13 +265,16 @@ function Footer() {
 
 export default function App() {
   const [theme, setTheme] = useState("paper");
+  const [xray, setXray] = useState(false);
 
   return (
-    <div className="app" data-theme={theme} id="top">
+    <div className="app" data-theme={theme} data-xray={xray} id="top">
       <div className="page-frame">
         <Header
           theme={theme}
+          xray={xray}
           onToggleTheme={() => setTheme(theme === "paper" ? "ink" : "paper")}
+          onToggleXray={() => setXray(!xray)}
         />
         <main>
           <Hero />

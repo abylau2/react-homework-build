@@ -111,7 +111,8 @@ nav {
 }
 
 nav a,
-.theme-switch {
+.theme-switch,
+.xray-switch {
   font-family: var(--mono);
   font-size: 0.72rem;
   font-weight: 700;
@@ -129,8 +130,15 @@ nav a:hover {
   border-color: currentColor;
 }
 
-.theme-switch {
+.header-actions {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.theme-switch,
+.xray-switch {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -141,12 +149,49 @@ nav a:hover {
   cursor: pointer;
 }
 
+.xray-switch {
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+}
+
+.xray-switch[aria-pressed="true"] {
+  color: #151711;
+  background: var(--acid);
+  box-shadow: 3px 3px 0 var(--line);
+  transform: translate(-2px, -2px);
+}
+
 .theme-dot {
   width: 11px;
   height: 11px;
   border: 2px solid var(--line);
   border-radius: 50%;
   background: var(--acid);
+}
+
+.app[data-xray="true"] [data-component] {
+  position: relative;
+  outline: 3px solid var(--coral);
+  outline-offset: -5px;
+}
+
+.app[data-xray="true"] [data-component]::before {
+  content: "<" attr(data-component) " />";
+  position: absolute;
+  z-index: 20;
+  top: 10px;
+  left: 10px;
+  padding: 6px 9px;
+  border: 2px solid var(--line);
+  color: #151711;
+  background: var(--acid);
+  box-shadow: 3px 3px 0 var(--line);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: none;
 }
 
 .hero {
@@ -796,8 +841,23 @@ footer a {
     padding: 0 16px;
   }
 
-  .theme-switch {
+  .header-actions {
+    gap: 10px;
+  }
+
+  .theme-switch,
+  .xray-switch {
     font-size: 0.61rem;
+  }
+
+  .theme-switch {
+    width: 11px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .xray-switch {
+    padding: 6px 7px;
   }
 
   .hero-copy {
