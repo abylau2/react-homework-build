@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="avatar-face" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="400" height="400" rx="36" fill="url(#bg-grad)" />
+  <rect width="398" height="398" x="1" y="1" rx="35" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+
+  <!-- Ambient Glow Circles -->
+  <circle cx="200" cy="180" r="130" fill="#6366f1" opacity="0.18" filter="url(#glow)" />
+  <circle cx="280" cy="220" r="90" fill="#00f2fe" opacity="0.15" filter="url(#glow)" />
+
+  <!-- Geometric Grid Accent -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="40" y1="0" x2="40" y2="400" />
+    <line x1="120" y1="0" x2="120" y2="400" />
+    <line x1="200" y1="0" x2="200" y2="400" />
+    <line x1="280" y1="0" x2="280" y2="400" />
+    <line x1="360" y1="0" x2="360" y2="400" />
+    <line x1="0" y1="80" x2="400" y2="80" />
+    <line x1="0" y1="160" x2="400" y2="160" />
+    <line x1="0" y1="240" x2="400" y2="240" />
+    <line x1="0" y1="320" x2="400" y2="320" />
+  </g>
+
+  <!-- Developer Silhouette / Character -->
+  <!-- Shoulders / Hoodie -->
+  <path d="M100 370 C100 300 135 270 170 260 L230 260 C265 270 300 300 300 370 Z" fill="#1e293b" />
+  <path d="M140 265 L170 370 L230 370 L260 265 C240 275 220 280 200 280 C180 280 160 275 140 265 Z" fill="#0f172a" opacity="0.6" />
+  <!-- Neon Zip Line -->
+  <line x1="200" y1="275" x2="200" y2="370" stroke="#00f2fe" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Head / Face -->
+  <rect x="155" y="140" width="90" height="110" rx="35" fill="#e2e8f0" />
+  <!-- Modern Hair -->
+  <path d="M150 155 C150 120 170 100 200 100 C230 100 250 120 250 155 C240 145 225 140 200 140 C175 140 160 145 150 155 Z" fill="#090d16" />
+  <path d="M148 140 C155 110 180 92 205 92 C235 92 254 110 252 145 C238 126 215 120 185 124 C165 126 154 133 148 140 Z" fill="#1e293b" />
+
+  <!-- Cyber Visor / High-Tech Glasses -->
+  <g filter="url(#glow)">
+    <rect x="142" y="165" width="116" height="34" rx="10" fill="#090d16" stroke="url(#cyan-glow)" stroke-width="2.5" />
+    <!-- Visor Display Line / Code scan -->
+    <line x1="152" y1="182" x2="248" y2="182" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" />
+    <circle cx="160" cy="182" r="3" fill="#00f2fe" />
+    <circle cx="240" cy="182" r="3" fill="#6366f1" />
+  </g>
+
+  <!-- Headphone Band -->
+  <path d="M136 175 C136 125 160 105 200 105 C240 105 264 125 264 175" fill="none" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+  <!-- Ear Cups -->
+  <rect x="130" y="160" width="14" height="42" rx="7" fill="#6366f1" />
+  <rect x="256" y="160" width="14" height="42" rx="7" fill="#6366f1" />
+  <rect x="133" y="165" width="8" height="32" rx="4" fill="#00f2fe" opacity="0.8" />
+  <rect x="259" y="165" width="8" height="32" rx="4" fill="#00f2fe" opacity="0.8" />
+
+  <!-- Floating Hologram Elements / Badges -->
+  <!-- Top Left: React atom snippet -->
+  <g transform="translate(48, 60)">
+    <rect width="64" height="32" rx="16" fill="rgba(15,23,42,0.8)" stroke="#00f2fe" stroke-width="1.5" />
+    <text x="32" y="21" fill="#00f2fe" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">&lt;A2/&gt;</text>
+  </g>
+
+  <!-- Top Right: Status dot -->
+  <g transform="translate(290, 60)">
+    <rect width="66" height="32" rx="16" fill="rgba(15,23,42,0.8)" stroke="#10b981" stroke-width="1.5" />
+    <circle cx="16" cy="16" r="4" fill="#10b981">
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="40" y="21" fill="#10b981" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">LIVE</text>
+  </g>
+
+  <!-- Bottom Floating Code Prompt -->
+  <g transform="translate(85, 335)">
+    <rect width="230" height="38" rx="12" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    <circle cx="20" cy="19" r="4" fill="#ef4444" />
+    <circle cx="34" cy="19" r="4" fill="#eab308" />
+    <circle cx="48" cy="19" r="4" fill="#10b981" />
+    <text x="68" y="23" fill="#94a3b8" font-family="monospace" font-size="11">abylau@studio ~ %</text>
+    <rect x="180" y="12" width="7" height="14" fill="#00f2fe">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+    </rect>
+  </g>
+</svg>
