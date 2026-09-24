@@ -1,350 +1,321 @@
 import { useState } from "react";
 
 // ============================================================================
-// 1. ДАННЫЕ ПРОФИЛЯ (Легко редактировать и объяснять)
+// PROFILE & LAB DATA
 // ============================================================================
-const PROFILE = {
-  name: "Abylau",
-  title: "Frontend Developer & React Enthusiast",
-  bio: "Привет! Я начинающий фронтенд-разработчик. Создаю адаптивные, быстрые и визуально приятные веб-приложения на React. Увлекаюсь современным веб-дизайном, компонентным подходом и чистым кодом.",
-  location: "Planet Earth 🌍 (Almaty, KZ)",
+const profile = {
+  name: "Abylau2",
   github: "https://github.com/abylau2",
-  githubUsername: "abylau2",
-  status: "Открыт к новым проектам и практике",
+  location: "Planet Earth",
 };
 
-// Список навыков с категориями для фильтрации
-const SKILLS = [
-  { id: 1, name: "React", category: "frontend", level: "Изучаю хуки и компоненты", icon: "⚛️" },
-  { id: 2, name: "JavaScript (ES6+)", category: "frontend", level: "Базовый синтаксис, массивы, async", icon: "⚡" },
-  { id: 3, name: "HTML5 & Семантика", category: "frontend", level: "Доступная и чистая разметка", icon: "🌐" },
-  { id: 4, name: "CSS3 & Flex/Grid", category: "frontend", level: "Адаптивная верстка, анимации", icon: "🎨" },
-  { id: 5, name: "Vite", category: "tools", level: "Быстрая сборка проектов", icon: "⚡" },
-  { id: 6, name: "Git & GitHub", category: "tools", level: "Ветвление, коммиты, деплой", icon: "🐙" },
-  { id: 7, name: "REST API", category: "tools", level: "Запросы fetch и работа с JSON", icon: "🔌" },
-  { id: 8, name: "Bento UI Design", category: "design", level: "Современные модульные интерфейсы", icon: "🍱" },
+const labNotes = [
+  {
+    number: "01",
+    label: "Component thinking",
+    title: "Decompose the complex. Compose with clarity.",
+    text: "I break user interfaces into small, decoupled React components that do one thing reliably, then assemble them into fluid, coherent experiences.",
+    detail: "Header · Hero · Marquee · About · Lab · Contact · Footer",
+  },
+  {
+    number: "02",
+    label: "Responsive systems",
+    title: "One concept, every viewport.",
+    text: "Layouts shouldn't simply scale down until they fit — they need an intentional rhythm and character whether viewed on mobile, tablet, or desktop.",
+    detail: "CSS Grid · clamp() · fluid typography · touch-first rhythm",
+  },
+  {
+    number: "03",
+    label: "Craft & semantics",
+    title: "Restraint and precision over visual noise.",
+    text: "Semantic HTML, high contrast, clean keyboard navigation, and purposeful motion make an application feel dependable, fast, and respectful to use.",
+    detail: "Accessible tags · focus states · tactile contrast · zero fluff",
+  },
 ];
 
-// Несколько фактов в секцию "Обо мне"
-const FACTS = [
-  { label: "Цель", value: "Стать сильным React-разработчиком", icon: "🎯" },
-  { label: "Подход", value: "Практика через реальный код каждый день", icon: "💻" },
-  { label: "Локация", value: PROFILE.location, icon: "📍" },
-  { label: "Приватность", value: "Без личных номеров и адресов (Safe Profile)", icon: "🔒" },
-];
-
-// ============================================================================
-// 2. КОМПОНЕНТ: HEADER (Шапка сайта с навигацией и сменой темы)
-// ============================================================================
-function Header({ theme, onToggleTheme }) {
+// Reusable SVG arrow icon
+function ArrowIcon() {
   return (
-    <header className="navbar">
-      <a href="#hero" className="brand-logo">
-        <span className="bracket">&lt;</span>
-        <span className="brand-text">Abylau</span>
-        <span className="bracket">/&gt;</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
+      <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" />
+    </svg>
+  );
+}
+
+// ============================================================================
+// COMPONENT 1: HEADER
+// ============================================================================
+function Header({ theme, xray, onToggleTheme, onToggleXray }) {
+  return (
+    <header className="site-header" data-component="Header">
+      <a className="wordmark" href="#top" aria-label="Abylau2 — back to top">
+        AB<span>/02</span>
       </a>
 
-      <nav className="nav-menu" aria-label="Основная навигация">
-        <a href="#about">Обо мне</a>
-        <a href="#skills">Навыки</a>
-        <a href="#contact">Контакты</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#lab">Lab notes</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <div className="header-actions">
-        {/* Кнопка смены цветовой темы */}
+        {/* React X-Ray Button: Highlights component boundaries */}
         <button
+          className="xray-switch"
           type="button"
-          className="btn-theme-toggle"
-          onClick={onToggleTheme}
-          title="Сменить тему"
+          aria-pressed={xray}
+          onClick={onToggleXray}
         >
-          {theme === "neon-cyan" ? "🌙 Неон" : "💜 Фиолетовый"}
+          <span aria-hidden="true">&lt;/&gt;</span>
+          React X-Ray
         </button>
 
-        <a
-          href={PROFILE.github}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-github"
-        >
-          GitHub ↗
-        </a>
+        {/* Paper / Ink Mode Toggle */}
+        <button className="theme-switch" type="button" onClick={onToggleTheme}>
+          <span className="theme-dot" aria-hidden="true" />
+          {theme === "paper" ? "Ink mode" : "Paper mode"}
+        </button>
       </div>
     </header>
   );
 }
 
 // ============================================================================
-// 3. КОМПОНЕНТ: HERO (Главный экран с именем, аватаром и интерактивным счетчиком)
+// COMPONENT 2: HERO
 // ============================================================================
 function Hero() {
-  // Простой и понятный интерактив через useState (лайки/приветствия)
-  const [likes, setLikes] = useState(42);
-  const [hasLiked, setHasLiked] = useState(false);
-
-  const handleLike = () => {
-    if (!hasLiked) {
-      setLikes(likes + 1);
-      setHasLiked(true);
-    }
-  };
-
   return (
-    <section className="hero-section" id="hero">
-      <div className="hero-content card">
-        <div className="status-pill">
-          <span className="status-dot" />
-          <span>{PROFILE.status}</span>
+    <section className="hero" aria-labelledby="hero-title" data-component="Hero">
+      <div className="hero-copy">
+        <div className="hero-meta">
+          <span>Self portrait in React</span>
+          <span>Issue No. 02</span>
         </div>
 
-        <h1 className="hero-title">
-          Привет, я <span className="highlight-text">{PROFILE.name}</span>
+        <p className="hero-kicker">Hello — my name is</p>
+        <h1 id="hero-title" aria-label={profile.name}>
+          <span>Abylau</span>
+          <span className="outline-word">2</span>
         </h1>
 
-        <p className="hero-subtitle">{PROFILE.title}</p>
-
-        <p className="hero-desc">{PROFILE.bio}</p>
-
-        <div className="hero-buttons">
-          <a href="#about" className="btn-primary">
-            Узнать больше ↓
+        <div className="hero-bottom">
+          <p>
+            I am learning how good ideas become useful interfaces — one
+            component, one experiment, one tiny improvement at a time.
+          </p>
+          <a className="arrow-link" href="#lab">
+            Enter the lab <ArrowIcon />
           </a>
-          <a href="#contact" className="btn-secondary">
-            Связаться
-          </a>
-          {/* Интерактивная кнопка с понятным состоянием */}
-          <button
-            type="button"
-            className={`btn-reaction ${hasLiked ? "reacted" : ""}`}
-            onClick={handleLike}
-          >
-            {hasLiked ? "🎉 Спасибо!" : "👋 Поприветствовать"} ({likes})
-          </button>
         </div>
       </div>
 
-      <div className="hero-avatar-card card">
-        <div className="avatar-wrapper">
-          <img
-            src={`${import.meta.env.BASE_URL}abylau-avatar.svg`}
-            alt={`Иллюстрация разработчика ${PROFILE.name}`}
-            className="avatar-image"
-          />
+      <figure className="portrait-card">
+        <div className="portrait-label portrait-label-top">Work in progress</div>
+        <img
+          src={`${import.meta.env.BASE_URL}abylau-editorial.svg`}
+          alt="Editorial collage illustration of Abylau2 designing an interface at his desk"
+        />
+        <figcaption>
+          <span>Current mode</span>
+          <strong>Learn → make → refine</strong>
+        </figcaption>
+        <div className="portrait-stamp" aria-hidden="true">
+          React
         </div>
-        <div className="avatar-meta">
-          <h3>{PROFILE.name}</h3>
-          <p>{PROFILE.location}</p>
-        </div>
-      </div>
+      </figure>
     </section>
   );
 }
 
 // ============================================================================
-// 4. КОМПОНЕНТ: ABOUT (Секция "Обо мне" с карточками фактов)
+// COMPONENT 3: MARQUEE (Design Manifesto)
+// ============================================================================
+function Marquee() {
+  return (
+    <div className="marquee" aria-label="Design principles" data-component="Marquee">
+      <div>
+        <span>Curiosity over perfection</span>
+        <span className="marquee-cross" aria-hidden="true">+</span>
+        <span>Clarity over clutter</span>
+        <span className="marquee-cross" aria-hidden="true">+</span>
+        <span>Progress over pretending</span>
+        <span className="marquee-cross" aria-hidden="true">+</span>
+        <span>Structure before style</span>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// COMPONENT 4: ABOUT ME
 // ============================================================================
 function About() {
   return (
-    <section className="section about-section" id="about">
-      <div className="section-header">
-        <span className="section-badge">01 / Инфо</span>
-        <h2>Обо мне (About Me)</h2>
-        <p>Кратко о моих целях, философии обучения и подходе к разработке.</p>
+    <section className="about" id="about" aria-labelledby="about-title" data-component="About">
+      <div className="section-heading">
+        <span className="section-index">01 / About</span>
+        <h2 id="about-title">An engineer with an editorial eye.</h2>
       </div>
 
-      <div className="about-grid">
-        <div className="card about-story">
-          <h3>Мой путь в веб-разработку</h3>
+      <div className="about-body">
+        <p className="about-lead">
+          I like the moment when a rough idea finally clicks into place: the
+          hierarchy makes sense, the interaction feels natural, and the code is
+          clean, readable, and solid tomorrow.
+        </p>
+        <div className="about-columns">
           <p>
-            Я изучаю React, потому что мне нравится идея разбивать сложные интерфейсы
-            на простые, понятные и независимые компоненты. Это делает код аккуратным,
-            а разработку — удобной и логичной.
+            Right now I am practicing React, reusable components, responsive
+            layouts, and accessible HTML. I care deeply about visual character
+            and typography, but I care just as much about structural integrity
+            and making the application intuitive to navigate.
           </p>
-          <p>
-            Сейчас активно практикуюсь в работе с состоянием (<strong>useState</strong>),
-            пропсами, списками данных через <strong>.map()</strong> и современной
-            адаптивной версткой на CSS Grid и Flexbox.
-          </p>
-          <div className="principles-tags">
-            <span className="tag">Чистый код</span>
-            <span className="tag">Компонентный подход</span>
-            <span className="tag">Любознательность</span>
-          </div>
-        </div>
-
-        <div className="facts-grid">
-          {FACTS.map((fact, index) => (
-            <div key={index} className="card fact-card">
-              <span className="fact-icon">{fact.icon}</span>
-              <div className="fact-info">
-                <span className="fact-label">{fact.label}</span>
-                <strong className="fact-value">{fact.value}</strong>
-              </div>
+          <dl>
+            <div>
+              <dt>Focus</dt>
+              <dd>React interfaces</dd>
             </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Learn by building</dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>{profile.location}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// COMPONENT 5: LEARNING LAB (Interactive Tabbed Notes)
+// ============================================================================
+function LearningLab() {
+  const [activeNote, setActiveNote] = useState(0);
+  const note = labNotes[activeNote];
+
+  return (
+    <section className="lab" id="lab" aria-labelledby="lab-title" data-component="LearningLab">
+      <div className="lab-sidebar">
+        <span className="section-index">02 / Lab notes</span>
+        <h2 id="lab-title">What I am training now.</h2>
+        <p>Choose a note to open the current experiment.</p>
+      </div>
+
+      <div className="lab-workspace">
+        <div className="lab-tabs" role="tablist" aria-label="Learning topics">
+          {labNotes.map((item, index) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeNote === index}
+              aria-controls="lab-panel"
+              id={`lab-tab-${index}`}
+              className={activeNote === index ? "active" : ""}
+              onClick={() => setActiveNote(index)}
+              key={item.number}
+            >
+              <span>{item.number}</span>
+              {item.label}
+            </button>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
 
-// ============================================================================
-// 5. КОМПОНЕНТ: SKILLS (Секция навыков с фильтрацией по категориям)
-// ============================================================================
-function Skills() {
-  // useState для фильтрации — очень простой паттерн, легко объяснить преподавателю
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const categories = [
-    { key: "all", label: "Все навыки" },
-    { key: "frontend", label: "Frontend" },
-    { key: "tools", label: "Инструменты" },
-    { key: "design", label: "Дизайн" },
-  ];
-
-  // Фильтруем массив: если "all" — отдаем всё, иначе только совпадения
-  const displayedSkills =
-    selectedCategory === "all"
-      ? SKILLS
-      : SKILLS.filter((skill) => skill.category === selectedCategory);
-
-  return (
-    <section className="section skills-section" id="skills">
-      <div className="section-header">
-        <span className="section-badge">02 / Стек</span>
-        <h2>Мои навыки (Skills)</h2>
-        <p>Технологии и инструменты, которые я использую в своих проектах.</p>
-      </div>
-
-      {/* Кнопки переключения фильтра */}
-      <div className="filter-buttons">
-        {categories.map((cat) => (
-          <button
-            key={cat.key}
-            type="button"
-            className={`filter-btn ${selectedCategory === cat.key ? "active" : ""}`}
-            onClick={() => setSelectedCategory(cat.key)}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Сетка карточек с навыками */}
-      <div className="skills-grid">
-        {displayedSkills.map((skill) => (
-          <div key={skill.id} className="card skill-card">
-            <span className="skill-icon">{skill.icon}</span>
-            <div className="skill-details">
-              <h4>{skill.name}</h4>
-              <p>{skill.level}</p>
+        <article
+          className="lab-panel"
+          id="lab-panel"
+          role="tabpanel"
+          aria-labelledby={`lab-tab-${activeNote}`}
+        >
+          <div className="panel-bar">
+            <span>abylau2.lab</span>
+            <span className="panel-status">active study</span>
+          </div>
+          <div className="panel-content" key={note.number}>
+            <span className="giant-number" aria-hidden="true">
+              {note.number}
+            </span>
+            <div>
+              <p className="panel-label">{note.label}</p>
+              <h3>{note.title}</h3>
+              <p>{note.text}</p>
+              <code>{note.detail}</code>
             </div>
           </div>
-        ))}
+        </article>
       </div>
     </section>
   );
 }
 
 // ============================================================================
-// 6. КОМПОНЕНТ: CONTACT (Секция контактов без приватных данных)
+// COMPONENT 6: CONTACT
 // ============================================================================
 function Contact() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyGithub = () => {
-    navigator.clipboard.writeText(PROFILE.github);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
-    <section className="section contact-section" id="contact">
-      <div className="section-header">
-        <span className="section-badge">03 / Связь</span>
-        <h2>Контакты (Contact Info)</h2>
-        <p>Безопасные контактные данные для связи и проверки задания.</p>
+    <section className="contact" id="contact" aria-labelledby="contact-title" data-component="Contact">
+      <div className="contact-signal" aria-hidden="true">
+        <span />
+        Signal open
       </div>
 
-      <div className="card contact-card">
-        <div className="contact-text">
-          <h3>Открыт к сотрудничеству и код-ревью</h3>
-          <p>
-            В соответствии с правилами приватности в задании, домашний адрес и
-            личный номер телефона не публикуются. Все учебные репозитории и код
-            открыты на моем профиле GitHub.
-          </p>
-
-          <div className="contact-items">
-            <div className="contact-item">
-              <span className="item-label">Локация:</span>
-              <span className="item-val">{PROFILE.location}</span>
-            </div>
-            <div className="contact-item">
-              <span className="item-label">GitHub:</span>
-              <span className="item-val">@{PROFILE.githubUsername}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="contact-actions">
-          <a
-            href={PROFILE.github}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary btn-full"
-          >
-            Перейти в GitHub Профиль ↗
-          </a>
-          <button
-            type="button"
-            className="btn-secondary btn-full"
-            onClick={handleCopyGithub}
-          >
-            {copied ? "✓ Ссылка скопирована!" : "Скопировать ссылку на GitHub"}
-          </button>
-        </div>
+      <div className="contact-copy">
+        <span className="section-index">03 / Contact</span>
+        <h2 id="contact-title">Let’s compare notes.</h2>
+        <p>
+          My learning projects live on GitHub. No phone number, no private
+          address — just work I am happy to share.
+        </p>
       </div>
+
+      <a className="github-ticket" href={profile.github} target="_blank" rel="noreferrer">
+        <span className="ticket-label">Public workspace</span>
+        <strong>github.com/abylau2</strong>
+        <span className="ticket-arrow">
+          <ArrowIcon />
+        </span>
+      </a>
     </section>
   );
 }
 
 // ============================================================================
-// 7. КОМПОНЕНТ: FOOTER (Подвал)
+// COMPONENT 7: FOOTER
 // ============================================================================
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <span>© {new Date().getFullYear()} {PROFILE.name} · React SPA Homework</span>
-        <a href="#hero" className="back-to-top">
-          Наверх ↑
-        </a>
-      </div>
+    <footer data-component="Footer">
+      <span>© {new Date().getFullYear()} {profile.name}</span>
+      <span>Built from scratch with React</span>
+      <a href="#top">Back to top ↑</a>
     </footer>
   );
 }
 
 // ============================================================================
-// ГЛАВНЫЙ КОМПОНЕНТ: APP (Сборка всего приложения)
+// ROOT APP COMPONENT
 // ============================================================================
 export default function App() {
-  const [theme, setTheme] = useState("neon-cyan");
-
-  const toggleTheme = () => {
-    setTheme(theme === "neon-cyan" ? "neon-purple" : "neon-cyan");
-  };
+  const [theme, setTheme] = useState("paper");
+  const [xray, setXray] = useState(false);
 
   return (
-    <div className={`app-container theme-${theme}`}>
-      <div className="glow-effect" />
-      <div className="content-wrapper">
-        <Header theme={theme} onToggleTheme={toggleTheme} />
+    <div className="app" data-theme={theme} data-xray={xray} id="top">
+      <div className="page-frame">
+        <Header
+          theme={theme}
+          xray={xray}
+          onToggleTheme={() => setTheme(theme === "paper" ? "ink" : "paper")}
+          onToggleXray={() => setXray(!xray)}
+        />
         <main>
           <Hero />
+          <Marquee />
           <About />
-          <Skills />
+          <LearningLab />
           <Contact />
         </main>
         <Footer />
