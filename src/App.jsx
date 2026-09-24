@@ -1,157 +1,167 @@
 import { useState } from "react";
 
 // ============================================================================
-// PROFILE & SPECIFICATION DATA
+// PROFILE & PROJECT DATA
 // ============================================================================
 const PROFILE = {
   name: "Abylau",
-  role: "Creative Developer & Interface Architect",
+  title: "Frontend Developer & React Engineer",
+  tagline: "Building responsive, high-performance interfaces with React.",
+  bio: "I develop user interfaces with an emphasis on clarity, accessibility, and architectural discipline. Rather than writing monolithic code, I break layouts down into reusable, decoupled React components with predictable state and fluid responsiveness.",
   location: "Planet Earth (Almaty, KZ)",
   github: "https://github.com/abylau2",
   githubHandle: "abylau2",
-  coordinates: "43°14'N 76°53'E",
+  status: "Available for projects & collaboration",
 };
 
-const SPECIFICATIONS = [
-  { label: "Discipline", value: "Frontend Systems & React Architecture" },
-  { label: "Core Methodology", value: "Declarative UI · Composable Primitives" },
-  { label: "Design Language", value: "Swiss Modernism & Brutalist Precision" },
-  { label: "Coordinates", value: PROFILE.location },
+const PROJECTS = [
+  {
+    id: 1,
+    title: "Marketplace Price & Stock Engine",
+    description:
+      "Automated analytics tool for real-time marketplace price tracking, stock verification, and competitor price intelligence.",
+    tags: ["React", "REST API", "Data Processing", "Vite"],
+    link: "https://github.com/abylau2",
+  },
+  {
+    id: 2,
+    title: "Modular UI Component System",
+    description:
+      "A reusable frontend library implementing decoupled card layouts, accessible navigation patterns, and fluid CSS math.",
+    tags: ["React", "JavaScript ESNext", "CSS Variables", "A11y"],
+    link: "https://github.com/abylau2/react-homework-build",
+  },
+  {
+    id: 3,
+    title: "Developer Portfolio & Diagnostics SPA",
+    description:
+      "Single-page application featuring responsive layout architecture, theme transitions, and automated GitHub Pages deployment.",
+    tags: ["React", "Vite", "gh-pages", "Responsive"],
+    link: "https://github.com/abylau2/react-homework-build",
+  },
 ];
 
-const LAB_EXPERIMENTS = [
+const SKILL_GROUPS = [
   {
-    id: "01",
-    tag: "ARCHITECTURE",
-    title: "Component Tree & Props Flow",
-    description:
-      "Interfaces are built like modular architecture. Every component has a dedicated responsibility, predictable inputs, and isolated local state.",
-    spec: "Header → Hero → About → BlueprintLab → Dispatch → Footer",
-    metric: "07 Decoupled Modules",
+    category: "Frontend Core",
+    skills: ["React 19", "JavaScript (ES6+)", "TypeScript", "HTML5 & Semantics", "CSS3 / Grid & Flexbox"],
   },
   {
-    id: "02",
-    tag: "REACTIVITY",
-    title: "State Primitives & React Hooks",
-    description:
-      "No over-engineering. State is maintained close to where it lives using declarative useState, guaranteeing zero unnecessary re-renders.",
-    spec: "Predictable state hoisting · Immutable updates · Clean lifecycles",
-    metric: "100% Declarative",
+    category: "Tools & Ecosystem",
+    skills: ["Vite", "Git & GitHub", "REST APIs & JSON", "npm", "GitHub Pages"],
   },
   {
-    id: "03",
-    tag: "RESPONSIVENESS",
-    title: "Fluid Layouts & Viewport Math",
-    description:
-      "Interfaces should adapt with architectural poise across micro-screens, tablets, and wide monitors without sacrificing character or rhythm.",
-    spec: "CSS Grid · clamp() typography · Flexible columns · Sub-pixel crispness",
-    metric: "Universal Viewports",
+    category: "Engineering Focus",
+    skills: ["Component Architecture", "Responsive Systems", "State Management", "Performance Optimization"],
+  },
+];
+
+const HIGHLIGHTS = [
+  {
+    title: "Component-First Thinking",
+    text: "Decomposing complex requirements into small, reusable, and predictable React primitives.",
+  },
+  {
+    title: "Responsive Craft",
+    text: "Building interfaces that adapt with character and rhythm across phones, tablets, and wide screens.",
+  },
+  {
+    title: "Clean & Maintainable Code",
+    text: "Writing semantic markup, clear props, and well-structured code that is easy to extend and maintain.",
   },
 ];
 
 // ============================================================================
-// 1. COMPONENT: TOP NAVIGATION
+// 1. NAVBAR
 // ============================================================================
-function TopNavigation({ mode, onToggleMode }) {
+function Navbar({ theme, onToggleTheme }) {
   return (
-    <header className="monolith-nav">
-      <div className="nav-brand">
-        <a href="#hero" className="brand-link">
-          <span className="brand-glyph">■</span>
-          <span className="brand-title">ABYLAU</span>
-          <span className="brand-sub">/ ARCHIVE.02</span>
+    <header className="navbar">
+      <div className="nav-container">
+        <a href="#hero" className="nav-brand">
+          <span className="brand-badge">A</span>
+          <span className="brand-name">{PROFILE.name}</span>
         </a>
-      </div>
 
-      <nav className="nav-menu" aria-label="System navigation">
-        <a href="#about">01 // Foundations</a>
-        <a href="#lab">02 // Blueprint</a>
-        <a href="#dispatch">03 // Dispatch</a>
-      </nav>
+        <nav className="nav-links" aria-label="Main Navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-      <div className="nav-controls">
-        {/* Theme mode toggle: Studio (paper) vs Blueprint (technical dark) */}
-        <button
-          type="button"
-          className="btn-mode-toggle"
-          onClick={onToggleMode}
-          aria-label="Toggle technical blueprint mode"
-        >
-          <span className="mode-indicator" />
-          <span>{mode === "studio" ? "Studio Mode" : "Blueprint Mode"}</span>
-        </button>
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="theme-btn"
+            onClick={onToggleTheme}
+            aria-label="Toggle theme mode"
+          >
+            {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+          </button>
 
-        <a
-          href={PROFILE.github}
-          target="_blank"
-          rel="noreferrer"
-          className="nav-btn-gh"
-        >
-          GitHub ↗
-        </a>
+          <a
+            href={PROFILE.github}
+            target="_blank"
+            rel="noreferrer"
+            className="github-btn"
+          >
+            GitHub ↗
+          </a>
+        </div>
       </div>
     </header>
   );
 }
 
 // ============================================================================
-// 2. COMPONENT: HERO SECTION
+// 2. HERO SECTION
 // ============================================================================
 function Hero({ onScrollTo }) {
-  const [pulseCount, setPulseCount] = useState(16);
-
   return (
-    <section className="hero-monolith" id="hero">
-      <div className="hero-text-block">
-        <div className="meta-strip">
-          <span className="meta-tag">EDITION // 2026</span>
-          <span className="meta-tag">LOCATION: {PROFILE.location}</span>
-          <span className="meta-tag">SYS // REACT 19</span>
+    <section className="hero-section" id="hero">
+      <div className="hero-grid">
+        <div className="hero-intro">
+          <div className="status-pill">
+            <span className="status-indicator" />
+            <span>{PROFILE.status}</span>
+          </div>
+
+          <h1 className="hero-headline">{PROFILE.tagline}</h1>
+
+          <p className="hero-bio">{PROFILE.bio}</p>
+
+          <div className="hero-ctas">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => onScrollTo("projects")}
+            >
+              View Projects ↓
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => onScrollTo("contact")}
+            >
+              Get in Touch
+            </button>
+          </div>
         </div>
 
-        <h1 className="hero-giant-heading">
-          <span>ABYLAU</span>
-          <span className="hero-subhead">INTERFACE ARCHITECTURE</span>
-        </h1>
-
-        <p className="hero-statement">
-          I design and engineer tactile, high-performance web systems. Rooted in
-          Swiss graphic precision, declarative React components, and functional clarity.
-        </p>
-
-        <div className="hero-action-row">
-          <button
-            type="button"
-            className="btn-monolith-primary"
-            onClick={() => onScrollTo("lab")}
-          >
-            Inspect Blueprint →
-          </button>
-          <button
-            type="button"
-            className="btn-monolith-outline"
-            onClick={() => setPulseCount((prev) => prev + 1)}
-          >
-            Interactive Pulse ({pulseCount})
-          </button>
-        </div>
-      </div>
-
-      <div className="hero-poster-frame">
-        <div className="poster-top-bar">
-          <span className="poster-badge">ARCHIVAL ARTIFACT</span>
-          <span className="poster-id">№ A2-77</span>
-        </div>
-        <div className="poster-image-holder">
-          <img
-            src={`${import.meta.env.BASE_URL}abylau-portrait.svg`}
-            alt="Swiss modernist silkscreen poster of developer Abylau"
-            className="poster-graphic"
-          />
-        </div>
-        <div className="poster-caption">
-          <strong>ABYLAU.STUDIO</strong>
-          <span>CERTIFIED FRONTEND CRAFT</span>
+        <div className="hero-card">
+          <div className="avatar-frame">
+            <img
+              src={`${import.meta.env.BASE_URL}abylau-profile.svg`}
+              alt={`Portrait of ${PROFILE.name}`}
+              className="avatar-img"
+            />
+          </div>
+          <div className="hero-card-meta">
+            <strong>{PROFILE.name}</strong>
+            <span>{PROFILE.title}</span>
+            <span className="location-tag">📍 {PROFILE.location}</span>
+          </div>
         </div>
       </div>
     </section>
@@ -159,238 +169,178 @@ function Hero({ onScrollTo }) {
 }
 
 // ============================================================================
-// 3. COMPONENT: MANIFESTO MARQUEE
-// ============================================================================
-function ManifestoMarquee() {
-  return (
-    <div className="marquee-monolith" aria-label="Core Engineering Manifesto">
-      <div className="marquee-inner">
-        <span>PRECISION OVER PREDICTION</span>
-        <span className="marquee-sep">■</span>
-        <span>STRUCTURE BEFORE ORNAMENT</span>
-        <span className="marquee-sep">■</span>
-        <span>DECLARATIVE COMPONENT RIGOR</span>
-        <span className="marquee-sep">■</span>
-        <span>TACTILE PERFORMANCE</span>
-        <span className="marquee-sep">■</span>
-        <span>RESPECT FOR THE VIEWPORT</span>
-      </div>
-    </div>
-  );
-}
-
-// ============================================================================
-// 4. COMPONENT: ABOUT SECTION (FOUNDATIONS)
+// 3. ABOUT SECTION
 // ============================================================================
 function About() {
   return (
-    <section className="section-monolith" id="about">
-      <div className="section-header-row">
-        <span className="section-index-num">01</span>
-        <div>
-          <h2>Foundations &amp; Philosophy</h2>
-          <p>The engineering principles guiding my interface development.</p>
-        </div>
+    <section className="section" id="about">
+      <div className="section-head">
+        <span className="section-subtitle">01 / Profile</span>
+        <h2>About Me</h2>
+        <p>A closer look at my engineering principles and development focus.</p>
       </div>
 
-      <div className="about-layout-grid">
-        <div className="about-statement-card">
-          <h3>Form Follows Functionality</h3>
+      <div className="about-grid">
+        <div className="about-text-card">
+          <h3>Engineering from First Principles</h3>
           <p>
-            Software interfaces shouldn't just look assembled — they should feel
-            inevitable. When hierarchy is intentional and components are decoupled,
-            complexity disappears into fluid utility.
+            I am driven by the process of turning ideas into dependable, user-friendly digital tools.
+            When building web applications, I focus on structural clarity: decoupling data logic from UI
+            rendering, organizing components with clear props, and ensuring high visual quality.
           </p>
           <p>
-            I focus on building resilient React applications: typed data boundaries,
-            semantic HTML primitives, accessible interactions, and thoughtful styling
-            that respects typography and physical contrast.
+            Whether implementing responsive layouts with CSS Grid, managing state with declarative React
+            hooks, or validating API responses, I build with attention to precision, accessibility, and speed.
           </p>
-
-          <div className="about-tags-row">
-            <span className="pill-tag">Single-Page Architecture</span>
-            <span className="pill-tag">Design Systems</span>
-            <span className="pill-tag">Declarative State</span>
-          </div>
         </div>
 
-        <div className="about-specs-card">
-          <div className="specs-table-head">
-            <span>SYSTEM SPECIFICATION</span>
-            <span>VALUE</span>
-          </div>
-          <dl className="specs-dl">
-            {SPECIFICATIONS.map((spec, i) => (
-              <div key={i} className="spec-row">
-                <dt>{spec.label}</dt>
-                <dd>{spec.value}</dd>
+        <div className="highlights-list">
+          {HIGHLIGHTS.map((item, index) => (
+            <div key={index} className="highlight-item">
+              <span className="highlight-num">0{index + 1}</span>
+              <div className="highlight-content">
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
               </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 5. COMPONENT: BLUEPRINT LAB (KILLER INTERACTIVE FEATURE)
-// ============================================================================
-function BlueprintLab() {
-  const [activeTab, setActiveTab] = useState(0);
-  const currentExp = LAB_EXPERIMENTS[activeTab];
-
-  return (
-    <section className="section-monolith" id="lab">
-      <div className="section-header-row">
-        <span className="section-index-num">02</span>
-        <div>
-          <h2>Interface Blueprint &amp; Lab</h2>
-          <p>Interactive diagnostics of component structure and state flow.</p>
-        </div>
-      </div>
-
-      <div className="lab-workbench">
-        {/* Tab Selection */}
-        <div className="lab-nav-tabs" role="tablist">
-          {LAB_EXPERIMENTS.map((item, idx) => (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === idx}
-              className={`lab-tab-btn ${activeTab === idx ? "active" : ""}`}
-              onClick={() => setActiveTab(idx)}
-            >
-              <span className="tab-num">{item.id}</span>
-              <span className="tab-title">{item.tag}</span>
-            </button>
+            </div>
           ))}
         </div>
-
-        {/* Active Inspection Panel */}
-        <article className="lab-display-card">
-          <div className="display-card-topbar">
-            <span>MODULE INSPECTOR // {currentExp.tag}</span>
-            <span className="live-badge">STATUS: MOUNTED</span>
-          </div>
-
-          <div className="display-content-grid">
-            <div className="display-left">
-              <span className="huge-spec-num">{currentExp.id}</span>
-              <span className="spec-metric-pill">{currentExp.metric}</span>
-            </div>
-
-            <div className="display-right">
-              <h3>{currentExp.title}</h3>
-              <p>{currentExp.description}</p>
-              <div className="code-spec-box">
-                <span className="code-label">ARCHITECTURE PROTOCOL:</span>
-                <code>{currentExp.spec}</code>
-              </div>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
   );
 }
 
 // ============================================================================
-// 6. COMPONENT: DISPATCH & CONTACT (BOARDING PASS TICKET)
+// 4. PROJECTS SECTION
 // ============================================================================
-function DispatchContact() {
+function Projects() {
+  return (
+    <section className="section" id="projects">
+      <div className="section-head">
+        <span className="section-subtitle">02 / Work</span>
+        <h2>Selected Projects</h2>
+        <p>Practical software and interface experiments built with modern tools.</p>
+      </div>
+
+      <div className="projects-grid">
+        {PROJECTS.map((proj) => (
+          <article key={proj.id} className="project-card">
+            <div className="project-header">
+              <span className="project-num">Project / 0{proj.id}</span>
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noreferrer"
+                className="project-ext-link"
+              >
+                Code ↗
+              </a>
+            </div>
+
+            <h3 className="project-title">{proj.title}</h3>
+            <p className="project-desc">{proj.description}</p>
+
+            <div className="project-tags">
+              {proj.tags.map((t) => (
+                <span key={t} className="tech-badge">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// 5. SKILLS SECTION
+// ============================================================================
+function Skills() {
+  return (
+    <section className="section" id="skills">
+      <div className="section-head">
+        <span className="section-subtitle">03 / Capabilities</span>
+        <h2>Tech Stack &amp; Skills</h2>
+        <p>Technologies, libraries, and workflows I work with.</p>
+      </div>
+
+      <div className="skills-container">
+        {SKILL_GROUPS.map((group) => (
+          <div key={group.category} className="skill-category-card">
+            <h3 className="category-title">{group.category}</h3>
+            <div className="skill-tags">
+              {group.skills.map((skill) => (
+                <span key={skill} className="skill-pill">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// 6. CONTACT SECTION (Safe & Privacy-Compliant)
+// ============================================================================
+function Contact() {
   const [copied, setCopied] = useState(false);
 
-  const handleCopyLink = () => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(PROFILE.github);
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   };
 
   return (
-    <section className="section-monolith" id="dispatch">
-      <div className="section-header-row">
-        <span className="section-index-num">03</span>
-        <div>
-          <h2>Dispatch &amp; Transmission</h2>
-          <p>Safe coordinates and public channels for code reviews and inquiries.</p>
-        </div>
+    <section className="section" id="contact">
+      <div className="section-head">
+        <span className="section-subtitle">04 / Connect</span>
+        <h2>Contact Information</h2>
+        <p>Safe coordinates and public channels for code review and inquiries.</p>
       </div>
 
-      <div className="ticket-boarding-pass">
-        <div className="ticket-main-body">
-          <div className="ticket-header-strip">
-            <span>DEVELOPER DISPATCH TICKET</span>
-            <span className="ticket-class">CLASS: PUBLIC_ACCESS</span>
-          </div>
-
-          <div className="ticket-grid-data">
-            <div className="ticket-cell">
-              <span className="cell-label">PASSENGER NAME</span>
-              <strong className="cell-val">{PROFILE.name}</strong>
-            </div>
-
-            <div className="ticket-cell">
-              <span className="cell-label">TARGET DESTINATION</span>
-              <strong className="cell-val">{PROFILE.location}</strong>
-            </div>
-
-            <div className="ticket-cell">
-              <span className="cell-label">REPOSITORY ACCESS</span>
-              <strong className="cell-val">github.com/{PROFILE.githubHandle}</strong>
-            </div>
-
-            <div className="ticket-cell">
-              <span className="cell-label">PRIVACY PROTOCOL</span>
-              <strong className="cell-val">Zero Sensitive Personal Data</strong>
-            </div>
-          </div>
-
-          <p className="ticket-compliance-note">
-            * In strict accordance with homework guidelines, phone numbers and
-            private residential addresses are excluded. All coursework code is
-            open source.
+      <div className="contact-card">
+        <div className="contact-body">
+          <h3>Let's Collaborate</h3>
+          <p>
+            All source code, repositories, and learning milestones are maintained openly on GitHub.
+            In strict compliance with assignment guidelines, personal phone numbers and home addresses
+            are deliberately omitted.
           </p>
+
+          <div className="contact-meta-row">
+            <div className="meta-box">
+              <span className="meta-label">Location:</span>
+              <strong className="meta-value">{PROFILE.location}</strong>
+            </div>
+            <div className="meta-box">
+              <span className="meta-label">GitHub:</span>
+              <strong className="meta-value">github.com/{PROFILE.githubHandle}</strong>
+            </div>
+          </div>
         </div>
 
-        {/* Perforated Stub Section */}
-        <div className="ticket-perforated-stub">
-          <div className="stub-notch notch-top" />
-          <div className="stub-notch notch-bottom" />
-
-          <div className="barcode-mockup" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-
-          <div className="stub-actions">
-            <a
-              href={PROFILE.github}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-ticket-primary"
-            >
-              Open GitHub Profile ↗
-            </a>
-            <button
-              type="button"
-              className="btn-ticket-secondary"
-              onClick={handleCopyLink}
-            >
-              {copied ? "✓ Copied" : "Copy Link"}
-            </button>
-          </div>
+        <div className="contact-buttons">
+          <a
+            href={PROFILE.github}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-primary btn-block"
+          >
+            Open GitHub Profile ↗
+          </a>
+          <button
+            type="button"
+            className="btn btn-secondary btn-block"
+            onClick={handleCopy}
+          >
+            {copied ? "✓ Copied to Clipboard" : "Copy GitHub Link"}
+          </button>
         </div>
       </div>
     </section>
@@ -398,23 +348,15 @@ function DispatchContact() {
 }
 
 // ============================================================================
-// 7. COMPONENT: FOOTER
+// 7. FOOTER
 // ============================================================================
 function Footer() {
   return (
-    <footer className="monolith-footer">
-      <div className="footer-left">
-        <strong>ABYLAU.ARCHIVE</strong>
-        <span>© {new Date().getFullYear()} — Built with React &amp; Vite</span>
-      </div>
-
-      <div className="footer-center">
-        <span>SWISS PRECISION · BRUTALIST ARCHITECTURE</span>
-      </div>
-
-      <div className="footer-right">
-        <a href="#hero" className="btn-back-top">
-          Back to Top ↑
+    <footer className="site-footer">
+      <div className="footer-container">
+        <span>© {new Date().getFullYear()} {PROFILE.name} · Built with React &amp; Vite</span>
+        <a href="#hero" className="back-top-link">
+          Back to top ↑
         </a>
       </div>
     </footer>
@@ -422,13 +364,13 @@ function Footer() {
 }
 
 // ============================================================================
-// ROOT APPLICATION COMPONENT
+// ROOT COMPONENT
 // ============================================================================
 export default function App() {
-  const [mode, setMode] = useState("studio");
+  const [theme, setTheme] = useState("dark");
 
-  const toggleMode = () => {
-    setMode((prev) => (prev === "studio" ? "blueprint" : "studio"));
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const scrollTo = (id) => {
@@ -439,18 +381,16 @@ export default function App() {
   };
 
   return (
-    <div className="monolith-app" data-mode={mode}>
-      <div className="monolith-frame">
-        <TopNavigation mode={mode} onToggleMode={toggleMode} />
-        <main>
-          <Hero onScrollTo={scrollTo} />
-          <ManifestoMarquee />
-          <About />
-          <BlueprintLab />
-          <DispatchContact />
-        </main>
-        <Footer />
-      </div>
+    <div className={`app-shell theme-${theme}`}>
+      <Navbar theme={theme} onToggleTheme={toggleTheme} />
+      <main className="main-content">
+        <Hero onScrollTo={scrollTo} />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
