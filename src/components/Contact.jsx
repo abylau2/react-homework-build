@@ -7,7 +7,7 @@ export default function Contact({ developer, links }) {
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(text);
       setCopiedText(label);
-      setTimeout(() => setCopiedText(null), 2200);
+      setTimeout(() => setCopiedText(null), 2000);
     }
   };
 
@@ -15,9 +15,9 @@ export default function Contact({ developer, links }) {
     <section className="section-block contact-editorial-section" id="contact" aria-label="Contact Information">
       <div className="contact-accent-block">
         <div className="contact-top-meta">
-          <span className="contact-tag">04 / CONTACT INFORMATION</span>
+          <span className="contact-tag">04 / CONTACT</span>
           <span className="contact-rule" aria-hidden="true" />
-          <span className="contact-coord">NO SENSITIVE DATA · 2026</span>
+          <span className="contact-coord">ALMATY // 2026</span>
         </div>
 
         <div className="contact-main-grid">
@@ -27,8 +27,8 @@ export default function Contact({ developer, links }) {
               <span>CONNECT.</span>
             </h2>
             <p className="contact-note">
-              Open to junior frontend roles, collaboration, and code review.
-              In strict accordance with homework privacy guidelines, private phone numbers and personal home addresses are omitted.
+              Interested in cybersecurity discussions, junior SOC analyst opportunities, and collaborative tech projects.
+              Sensitive personal information (phone number, home address) is omitted in accordance with academic guidelines.
             </p>
           </div>
 
@@ -73,15 +73,6 @@ export default function Contact({ developer, links }) {
                 <span className="channel-handle">{links.email}</span>
                 <span className="channel-arrow" aria-hidden="true">↗</span>
               </a>
-
-              <div className="contact-channel-item static-channel">
-                <div className="channel-meta">
-                  <span className="channel-num">04</span>
-                  <span className="channel-name">Address</span>
-                </div>
-                <span className="channel-handle">Planet Earth (Almaty, KZ)</span>
-                <span className="channel-arrow" aria-hidden="true">🪐</span>
-              </div>
             </div>
 
             <div className="contact-copy-actions">
@@ -97,7 +88,7 @@ export default function Contact({ developer, links }) {
                 className="editorial-action-btn"
                 onClick={() => handleCopy(links.github, "github")}
               >
-                {copiedText === "github" ? "✓ Copied GitHub" : "Copy GitHub Link"}
+                {copiedText === "github" ? "✓ Copied GitHub Link" : "Copy GitHub Link"}
               </button>
             </div>
           </div>

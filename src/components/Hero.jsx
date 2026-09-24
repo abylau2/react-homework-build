@@ -1,9 +1,11 @@
+import avatar from "../assets/avatar.jpg";
+
 export default function Hero({ developer, links }) {
   return (
-    <section className="hero-section" id="hero" aria-label="Introduction">
+    <section className="hero-section" id="hero" aria-label="Introduction & Character Dossier">
       {/* Top Technical Metadata Bar */}
       <div className="hero-meta-row">
-        <span className="hero-meta-item">{developer.title}</span>
+        <span className="hero-meta-item">{developer.profileId}</span>
         <span className="hero-meta-divider">—</span>
         <span className="hero-meta-item">{developer.location}</span>
         <span className="hero-meta-divider">—</span>
@@ -12,49 +14,84 @@ export default function Hero({ developer, links }) {
         <span className="hero-meta-item hero-meta-year">{developer.year}</span>
       </div>
 
-      {/* Prominent Typographic Name */}
+      {/* Prominent Typographic Name Block */}
       <div className="hero-name-block">
         <h1 className="hero-name">{developer.name}</h1>
-        <p className="hero-subline">{developer.subline}</p>
+        <p className="hero-subline">{developer.roleTag}</p>
       </div>
 
-      {/* Asymmetric Editorial Composition */}
+      {/* Asymmetric Editorial & Dossier Composition */}
       <div className="hero-grid">
         <div className="hero-content">
-          <p className="hero-intro-text">{developer.heroIntro}</p>
+          <p className="hero-intro-text">{developer.heroDescription}</p>
 
-          <div className="hero-status">
-            <span className="status-dot" aria-hidden="true" />
-            <span className="status-label">STATUS</span>
-            <span className="status-separator">/</span>
-            <span className="status-value">{developer.status}</span>
+          <div className="hero-status-strip">
+            <div className="hero-status-pill">
+              <span className="status-dot" aria-hidden="true" />
+              <span className="status-label">STATUS</span>
+              <span className="status-sep">/</span>
+              <span className="status-val">{developer.status}</span>
+            </div>
+            <div className="hero-tag-pill">
+              <span className="tag-label">AIM</span>
+              <span className="status-sep">/</span>
+              <span className="tag-val">SOC ANALYST</span>
+            </div>
           </div>
 
-          <div className="hero-links">
-            <a href="#projects" className="editorial-link">
-              View selected work <span className="arrow">↓</span>
+          <div className="hero-actions">
+            <a href="#about" className="editorial-link">
+              Read Background <span className="arrow">↓</span>
+            </a>
+            <a href="#focus" className="editorial-link">
+              Explore Focus Areas <span className="arrow">↓</span>
             </a>
             <a href="#contact" className="editorial-link">
-              Get in touch <span className="arrow">↗</span>
+              Get in Touch <span className="arrow">↗</span>
             </a>
           </div>
         </div>
 
-        <aside className="hero-figure">
-          <div className="figure-frame">
+        {/* Character Profile / Dossier Card */}
+        <aside className="dossier-card" aria-label="Identity Card">
+          <div className="dossier-header">
+            <div className="dossier-code">
+              <span className="dossier-dot" aria-hidden="true" />
+              <span>DOSSIER // ABY-01</span>
+            </div>
+            <span className="dossier-class">{developer.classTag}</span>
+          </div>
+
+          <div className="dossier-image-container">
             <img
-              src={`${import.meta.env.BASE_URL}abylau-portrait.svg`}
-              alt="Swiss graphic portrait of Abylau with technical composition"
-              className="figure-image"
+              src={avatar}
+              alt="Abylau profile"
+              className="hero-avatar"
               loading="eager"
             />
+            <div className="dossier-overlay-badge">
+              <span className="badge-corner top-left" aria-hidden="true" />
+              <span className="badge-corner top-right" aria-hidden="true" />
+              <span className="badge-corner bottom-left" aria-hidden="true" />
+              <span className="badge-corner bottom-right" aria-hidden="true" />
+              <span className="badge-text">ID: 01-ALM</span>
+            </div>
           </div>
-          <figcaption className="figure-caption">
-            <span className="figure-tag">FIG. 01</span>
-            <span className="figure-caption-text">
-              Abylau — Security &amp; Frontend / Almaty, KZ
-            </span>
-          </figcaption>
+
+          <div className="dossier-meta-footer">
+            <div className="dossier-field-row">
+              <span className="dossier-key">OPERATOR</span>
+              <span className="dossier-val">{developer.name}</span>
+            </div>
+            <div className="dossier-field-row">
+              <span className="dossier-key">ROLE</span>
+              <span className="dossier-val">{developer.focus}</span>
+            </div>
+            <div className="dossier-field-row">
+              <span className="dossier-key">LOADOUT</span>
+              <span className="dossier-val">SOC · LINUX · REACT</span>
+            </div>
+          </div>
         </aside>
       </div>
     </section>

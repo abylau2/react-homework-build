@@ -1,92 +1,103 @@
 /**
  * Portfolio Data Configuration
- * Centralized, easily editable information for Abylau's editorial portfolio.
+ * Personal Digital Dossier: Abylau (Cybersecurity / SOC Analysis)
  */
 
 export const DEVELOPER = {
   name: "ABYLAU",
-  title: "CYBERSECURITY & FRONTEND",
-  location: "ALMATY, KAZAKHSTAN",
+  field: "CYBERSECURITY",
+  focus: "SOC ANALYSIS",
+  roleTag: "CYBERSECURITY / SOC ANALYSIS",
+  location: "ALMATY / KZ",
   coordinates: "43.2389° N, 76.8897° E",
+  status: "ONLINE",
   year: "2026",
-  subline: "Security Operations · Automation · React / UI Systems · Student & Builder",
-  status: "Exploring SOC Analysis & UI Engineering.",
-  heroIntro:
-    "I’m Abylau, a tech enthusiast from Almaty diving deep into cybersecurity, automation, and aspiring towards a SOC Analyst path. I use frontend and AI tools to turn complex data into clean, functional interfaces.",
+  profileId: "OPERATOR // 01",
+  classTag: "DEFENSIVE SECURITY",
+  specialization: "SOC / AUTOMATION",
+  heroDescription:
+    "Student focused on cybersecurity and aspiring SOC analyst. Exploring security automation and defensive monitoring, while learning frontend and AI tools to build clean interfaces beyond the backend.",
   aboutText:
-    "I’m based in Almaty with a strong passion for cybersecurity and workflow automation, currently working towards becoming a SOC Analyst. I love developing automated scripts, monitoring pipelines, and backend logic that solve real-world operational problems.",
+    "I’m deeply interested in cybersecurity and aspire to work as a SOC Analyst. Currently, I’m learning security automation and defensive monitoring—how security operations teams analyze logs, triage alerts, and investigate incidents. At the same time, frontend development interests me as a great way to understand both sides of systems beyond the backend, using modern AI tools to thoughtfully design and build clean web applications.",
   aboutSubtext:
-    "I actively explore frontend development and React because I want to understand systems end-to-end rather than staying confined strictly to the backend. By leveraging modern AI workflows, I can craft sharp, responsive interfaces to present and interact with technical data beautifully.",
+    "Outside of tech and cybersecurity, I spend my time rock climbing, reading history, watching anime/manga, and learning about evolutionary biology.",
   facts: [
-    { label: "BASE", value: "Almaty, Kazakhstan" },
-    { label: "FOCUS", value: "Cybersecurity · Automation · SOC Analysis" },
-    { label: "FRONTEND", value: "React · Modern UI · AI-assisted Workflows" },
-    { label: "CURRENTLY", value: "Automating workflows & learning security operations" },
+    { label: "LOCATION", value: "Almaty, Kazakhstan" },
+    { label: "FIELD", value: "Cybersecurity" },
+    { label: "TARGET ROLE", value: "SOC Analyst" },
+    { label: "CURRENT FOCUS", value: "Security Automation & Alert Triage" },
+    { label: "EXPLORING", value: "Frontend, Full-stack UI & AI Tools" },
   ],
 };
 
-export const PROJECTS = [
+export const FOCUS_AREAS = [
   {
     id: "01",
-    title: "Portfolio Website",
-    category: "Personal Work",
-    description:
-      "Personal editorial portfolio built with reusable React components, fluid typography, and clean CSS grid composition.",
-    tech: ["React", "CSS", "Vite"],
-    year: "2026",
-    link: "https://github.com/abylau2/react-homework-build",
+    title: "SECURITY MONITORING",
+    description: "Understanding logs, alerts and suspicious system activity.",
   },
   {
     id: "02",
-    title: "Healthcare Monitoring UI",
-    category: "Interface Concept",
-    description:
-      "Interface concept for monitoring patient IoT health data, patient vitals, and device status with real-time indicators.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    year: "2026",
-    link: "https://github.com/abylau2",
+    title: "SOC ANALYSIS",
+    description: "Learning how analysts investigate, triage and prioritize security events.",
   },
   {
     id: "03",
-    title: "Marketplace Price & Stock Engine",
-    category: "Automation & Analytics",
-    description:
-      "Automated verification and analytics tool for tracking marketplace inventory, stock levels, and competitor price intelligence.",
-    tech: ["React", "REST API", "Vite"],
-    year: "2026",
-    link: "https://github.com/abylau2",
+    title: "SECURITY AUTOMATION",
+    description: "Building workflows and scripts to streamline routine alert triage and monitoring.",
+  },
+  {
+    id: "04",
+    title: "NETWORK DEFENSE",
+    description: "Understanding how systems communicate, packet flow, and where threats occur.",
+  },
+  {
+    id: "05",
+    title: "LINUX & SYSTEMS",
+    description: "Practical knowledge of operating systems, permissions and command-line tools.",
   },
 ];
 
-export const SKILL_CATEGORIES = [
+export const TECH_STACK = [
   {
-    category: "LANGUAGES & SCRIPTS",
-    index: "01",
-    skills: ["JavaScript (ES6+)", "Python", "HTML5 & CSS3", "Bash / Shell"],
+    category: "CYBERSECURITY",
+    skills: ["SOC Fundamentals", "Security Monitoring", "Log Analysis", "Incident Triage", "Automation Workflows"],
   },
   {
-    category: "FRONTEND & UI",
-    index: "02",
-    skills: ["React 19", "Vite", "AI-assisted UI", "Component Architecture"],
+    category: "SYSTEMS",
+    skills: ["Linux (Ubuntu/Debian)", "Windows Admin", "Bash Scripting", "Networking Basics"],
   },
   {
-    category: "SECURITY & OPS",
-    index: "03",
-    skills: ["SOC Analysis Core", "Process Automation", "Log Analysis", "Network Basics"],
-  },
-  {
-    category: "TOOLS & WORKFLOW",
-    index: "04",
-    skills: ["Git & GitHub", "VS Code", "npm / Packages", "GitHub Pages"],
+    category: "FRONTEND & TOOLS",
+    skills: ["React (Single Page App)", "JavaScript", "HTML / CSS", "Git & GitHub", "AI-assisted Dev"],
   },
 ];
 
-/**
- * Easily editable contact links.
- * In compliance with assignment rules, phone numbers and home addresses are never exposed.
- */
+export const INTERESTS = [
+  {
+    number: "01",
+    title: "ROCK CLIMBING",
+    description: "Movement, technique and physical problem-solving.",
+  },
+  {
+    number: "02",
+    title: "HISTORY",
+    description: "Understanding how people, societies and conflicts developed.",
+  },
+  {
+    number: "03",
+    title: "MANGA & ANIME",
+    description: "Stories, worlds and character-driven narratives.",
+  },
+  {
+    number: "04",
+    title: "EVOLUTIONARY BIOLOGY",
+    description: "Evolution, adaptation and the development of life.",
+  },
+];
+
 export const CONTACT_LINKS = {
   github: "https://github.com/abylau2",
-  instagram: "https://instagram.com/abylau", // editable placeholder
-  email: "abylau.dev@example.com", // editable placeholder
+  instagram: "https://instagram.com/abylau",
+  email: "abylau.dev@example.com",
 };

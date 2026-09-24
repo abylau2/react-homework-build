@@ -4,8 +4,8 @@ export default function About({ developer }) {
       <div className="section-grid-editorial">
         {/* Left Column: Index & Title */}
         <div className="section-col-header">
-          <span className="section-kicker">01 / ABOUT ME</span>
-          <h2 className="section-title">About Me</h2>
+          <span className="section-kicker">01 / ABOUT</span>
+          <h2 className="section-title">Background &amp; Direction</h2>
         </div>
 
         {/* Right Column: Narrative + Editorial Metadata */}

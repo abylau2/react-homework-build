@@ -2,24 +2,24 @@ export default function Header({ links }) {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a href="#hero" className="header-brand" aria-label="Abylau Portfolio Home">
+        <a href="#hero" className="header-brand" aria-label="Abylau Profile Home">
           <span className="brand-name">ABYLAU</span>
-          <span className="brand-divider">/</span>
-          <span className="brand-sub">PORTFOLIO</span>
+          <span className="brand-divider">//</span>
+          <span className="brand-sub">2026</span>
         </a>
 
         <nav className="header-nav" aria-label="Main navigation">
           <a href="#about" className="nav-item">
-            <span className="nav-index">01</span> About
+            <span className="nav-index">01</span> ABOUT
           </a>
-          <a href="#projects" className="nav-item">
-            <span className="nav-index">02</span> Work
+          <a href="#focus" className="nav-item">
+            <span className="nav-index">02</span> FOCUS
           </a>
-          <a href="#skills" className="nav-item">
-            <span className="nav-index">03</span> Skills
+          <a href="#interests" className="nav-item">
+            <span className="nav-index">03</span> INTERESTS
           </a>
           <a href="#contact" className="nav-item">
-            <span className="nav-index">04</span> Contact
+            <span className="nav-index">04</span> CONTACT
           </a>
         </nav>
 
@@ -28,10 +28,10 @@ export default function Header({ links }) {
             href={links.github}
             target="_blank"
             rel="noreferrer"
-            className="header-ext-link"
+            className="header-link"
             aria-label="GitHub Profile (opens in new tab)"
           >
-            GitHub ↗
+            GITHUB ↗
           </a>
         </div>
       </div>

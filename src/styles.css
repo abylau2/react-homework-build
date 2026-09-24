@@ -1,27 +1,30 @@
 /* ==========================================================================
-   ABYLAU — PERSONAL EDITORIAL PORTFOLIO
-   Swiss Editorial Design · Typography-Driven · High-Contrast Minimalist
-   Zero AI-slop, Zero SaaS Gradients, Zero Dark Card Spam
+   ABYLAU — PERSONAL DIGITAL DOSSIER
+   Field: Cybersecurity / SOC Analysis
+   Aesthetic: Swiss Editorial Design + Technical Identity Dossier
+   Zero AI Slop · High Typography Contrast · Responsive 1440 -> 390px
    ========================================================================== */
 
 :root {
-  /* Editorial Palette: Warm fine paper + high-contrast ink + royal blue accent */
+  /* Editorial Palette: Warm paper + deep ink + technical cobalt blue */
   --bg: #F2F0EA;
   --bg-subtle: #E8E5DD;
-  --bg-tint: rgba(17, 17, 17, 0.035);
-  --bg-tint-hover: rgba(17, 17, 17, 0.06);
+  --bg-card: #E4E1D7;
+  --bg-tint: rgba(17, 17, 17, 0.04);
+  --bg-tint-hover: rgba(17, 17, 17, 0.07);
 
   --text: #111111;
-  --text-muted: #5E5C56;
-  --text-dim: #88857E;
+  --text-muted: #56534C;
+  --text-dim: #848077;
 
-  --accent: #2457F5;
-  --accent-hover: #1642D0;
+  --accent: #1D4ED8;
+  --accent-hover: #173FB0;
   --accent-light: #EEF2FF;
   --accent-red: #D94824;
+  --accent-lime: #718D00;
 
-  --border: rgba(17, 17, 17, 0.15);
-  --border-strong: rgba(17, 17, 17, 0.4);
+  --border: rgba(17, 17, 17, 0.16);
+  --border-strong: #111111;
   --border-light: rgba(17, 17, 17, 0.08);
 
   /* Typography */
@@ -31,10 +34,9 @@
   /* Layout */
   --max-width: 1320px;
   --gutter: clamp(20px, 4vw, 44px);
-  --section-spacing: clamp(64px, 9vw, 120px);
+  --section-spacing: clamp(56px, 8vw, 112px);
 
   --radius: 0px;
-  --radius-sm: 2px;
 }
 
 /* Base Reset & Foundation */
@@ -93,7 +95,7 @@ button:focus-visible {
 
 /* ==========================================================================
    HEADER
-   Minimal, typographic, no rounded navbar container, subtle sticky border
+   Minimal, typographic, no rounded navbar container, sticky border
    ========================================================================== */
 
 .site-header {
@@ -122,7 +124,7 @@ button:focus-visible {
   text-decoration: none;
   color: var(--text);
   font-weight: 800;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   letter-spacing: 0.06em;
 }
 
@@ -137,7 +139,7 @@ button:focus-visible {
 
 .brand-sub {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--text-muted);
   letter-spacing: 0.12em;
@@ -146,7 +148,7 @@ button:focus-visible {
 .header-nav {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 3vw, 36px);
+  gap: clamp(14px, 2.8vw, 36px);
 }
 
 .nav-item {
@@ -154,8 +156,8 @@ button:focus-visible {
   align-items: baseline;
   gap: 6px;
   text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.86rem;
+  font-weight: 600;
   color: var(--text-muted);
   transition: color 0.15s ease;
   position: relative;
@@ -179,7 +181,7 @@ button:focus-visible {
   bottom: 0;
   left: 0;
   width: 0%;
-  height: 1px;
+  height: 1.5px;
   background-color: var(--accent);
   transition: width 0.2s ease;
 }
@@ -193,30 +195,29 @@ button:focus-visible {
   align-items: center;
 }
 
-.header-ext-link {
+.header-link {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text);
   text-decoration: none;
-  padding: 4px 8px;
-  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border: 1px solid var(--border-strong);
   transition: all 0.15s ease;
 }
 
-.header-ext-link:hover {
+.header-link:hover {
   background-color: var(--text);
   color: var(--bg);
-  border-color: var(--text);
 }
 
 /* ==========================================================================
-   HERO SECTION
-   Dominant typography, technical metadata, asymmetric editorial layout
+   HERO SECTION & CHARACTER DOSSIER
+   Dominant typography, technical identity card, high-contrast aesthetic
    ========================================================================== */
 
 .hero-section {
-  padding-top: clamp(36px, 6vw, 64px);
+  padding-top: clamp(32px, 5vw, 56px);
   padding-bottom: var(--section-spacing);
   border-bottom: 1px solid var(--border);
 }
@@ -232,12 +233,12 @@ button:focus-visible {
   letter-spacing: 0.08em;
   color: var(--text-muted);
   text-transform: uppercase;
-  padding-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--border-light);
 }
 
 .hero-meta-divider {
-  color: var(--border-strong);
+  color: var(--border);
   font-weight: 300;
 }
 
@@ -250,15 +251,15 @@ button:focus-visible {
   margin-left: auto;
 }
 
-/* Massive Typographic Hero Name */
+/* Massive Typographic Hero Name Block */
 .hero-name-block {
-  padding: clamp(28px, 4vw, 48px) 0 clamp(20px, 3vw, 36px);
+  padding: clamp(24px, 3.5vw, 44px) 0 clamp(16px, 2.5vw, 28px);
   border-bottom: 1px solid var(--border-light);
 }
 
 .hero-name {
   font-family: var(--font-sans);
-  font-size: clamp(3.8rem, 11vw, 8.8rem);
+  font-size: clamp(3.6rem, 10vw, 8.5rem);
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.045em;
@@ -270,18 +271,18 @@ button:focus-visible {
 
 .hero-subline {
   font-family: var(--font-mono);
-  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.02em;
-  margin-top: 18px;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-top: 14px;
 }
 
-/* Asymmetric Hero Content + Image */
+/* Asymmetric Hero Grid */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
-  gap: clamp(36px, 6vw, 80px);
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr);
+  gap: clamp(36px, 5.5vw, 76px);
   align-items: start;
   padding-top: clamp(28px, 4vw, 48px);
 }
@@ -292,52 +293,65 @@ button:focus-visible {
 }
 
 .hero-intro-text {
-  font-size: clamp(1.15rem, 1.8vw, 1.42rem);
+  font-size: clamp(1.12rem, 1.7vw, 1.38rem);
   line-height: 1.55;
   color: var(--text);
   font-weight: 400;
-  margin-bottom: 32px;
-  max-width: 640px;
+  margin-bottom: 28px;
+  max-width: 620px;
 }
 
-.hero-status {
+.hero-status-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.hero-status-pill,
+.hero-tag-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  padding: 8px 14px;
+  font-size: 0.74rem;
+  padding: 6px 12px;
   background-color: var(--bg-tint);
   border: 1px solid var(--border);
-  margin-bottom: 36px;
-  width: fit-content;
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--accent);
+  background-color: #22C55E;
 }
 
-.status-label {
+.status-label,
+.tag-label {
   font-weight: 700;
   color: var(--text);
 }
 
-.status-separator {
+.status-sep {
   color: var(--text-dim);
 }
 
-.status-value {
+.status-val {
   color: var(--text-muted);
+  font-weight: 600;
 }
 
-.hero-links {
+.tag-val {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(16px, 3vw, 32px);
+  gap: clamp(16px, 2.5vw, 28px);
   align-items: center;
 }
 
@@ -348,10 +362,10 @@ button:focus-visible {
   text-decoration: none;
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--text);
+  padding: 6px 0;
+  border-bottom: 1.5px solid var(--text);
   transition: all 0.15s ease;
 }
 
@@ -370,59 +384,130 @@ button:focus-visible {
   transform: translate(2px, 2px);
 }
 
-/* Hero Portrait Figure */
-.hero-figure {
+/* ==========================================================================
+   CHARACTER DOSSIER CARD (Profile & Avatar)
+   Stylized video-game identity dossier with exact avatar.jpg
+   ========================================================================== */
+
+.dossier-card {
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  position: relative;
   align-self: start;
 }
 
-.figure-frame {
-  width: 100%;
-  aspect-ratio: 1;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--text);
-  overflow: hidden;
-  position: relative;
+.dossier-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: var(--text);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-.figure-image {
+.dossier-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dossier-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.dossier-class {
+  color: var(--bg-subtle);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.dossier-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 736 / 731;
+  background-color: #202020;
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--border-strong);
+}
+
+.hero-avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
-.figure-frame:hover .figure-image {
+.dossier-card:hover .hero-avatar {
   transform: scale(1.015);
 }
 
-.figure-caption {
+/* Corner brackets & technical badge */
+.dossier-overlay-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: rgba(17, 17, 17, 0.88);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.badge-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #FFFFFF;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.dossier-meta-footer {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--bg-card);
+}
+
+.dossier-field-row {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-top: 10px;
+  font-size: 0.74rem;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 4px;
 }
 
-.figure-tag {
-  font-weight: 700;
+.dossier-field-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dossier-key {
+  color: var(--text-dim);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.dossier-val {
   color: var(--text);
-  background-color: var(--bg-tint-hover);
-  padding: 2px 6px;
-  border: 1px solid var(--border);
-}
-
-.figure-caption-text {
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 /* ==========================================================================
-   GENERIC SECTION FOUNDATION
-   Clear typography, numbering, editorial grid
+   EDITORIAL SECTION SYSTEM
+   2-Column Grid Layout: Section Index/Title on Left, Content on Right
    ========================================================================== */
 
 .section-block {
@@ -430,45 +515,6 @@ button:focus-visible {
   padding-bottom: var(--section-spacing);
   border-bottom: 1px solid var(--border);
 }
-
-.section-header-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: clamp(32px, 5vw, 56px);
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.section-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  line-height: 1.1;
-}
-
-.section-count {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  margin-left: auto;
-}
-
-/* ==========================================================================
-   ABOUT SECTION
-   Two-column editorial narrative + technical metadata lines
-   ========================================================================== */
 
 .section-grid-editorial {
   display: grid;
@@ -483,30 +529,65 @@ button:focus-visible {
   gap: 12px;
 }
 
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.section-col-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 280px;
+  margin-top: 4px;
+}
+
+.section-col-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   01 / ABOUT SECTION
+   Natural human narrative, student positioning, quick facts list
+   ========================================================================== */
+
 .editorial-lead-text {
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 .editorial-lead-text p {
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-size: clamp(1.08rem, 1.5vw, 1.3rem);
   line-height: 1.65;
   color: var(--text);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .editorial-secondary-text {
-  font-size: clamp(0.95rem, 1.3vw, 1.05rem) !important;
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem) !important;
   color: var(--text-muted) !important;
   line-height: 1.65 !important;
-  max-width: 680px;
+  max-width: 660px;
 }
 
 .facts-metadata-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  border-top: 1px solid var(--border);
-  padding-top: 28px;
+  gap: 14px;
+  border-top: 1px solid var(--border-strong);
+  padding-top: 26px;
 }
 
 .fact-row {
@@ -514,14 +595,14 @@ button:focus-visible {
   align-items: baseline;
   gap: 16px;
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
 }
 
 .fact-label {
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.08em;
-  min-width: 110px;
+  min-width: 140px;
 }
 
 .fact-line {
@@ -539,187 +620,192 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   PROJECTS SECTION
-   Large horizontal rows with thin dividers, interactive hover shift
+   02 / FOCUS SECTION (WHAT I'M LEARNING)
+   5 Learning Rows + 3-Column Technical Stack Matrix
    ========================================================================== */
 
-.projects-table {
+.focus-areas-list {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--text);
+  border-top: 1.5px solid var(--border-strong);
+  margin-bottom: 48px;
 }
 
-.project-row {
+.focus-area-row {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 36px);
+  padding: clamp(20px, 3vw, 28px) 0;
   border-bottom: 1px solid var(--border);
   transition: background-color 0.15s ease;
 }
 
-.project-row:hover {
+.focus-area-row:hover {
   background-color: var(--bg-tint);
 }
 
-.project-row-link {
-  display: grid;
-  grid-template-columns: 60px minmax(240px, 2fr) minmax(180px, 1.2fr) 90px 48px;
-  align-items: center;
-  gap: clamp(16px, 2.5vw, 36px);
-  padding: clamp(24px, 3.5vw, 36px) 12px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.project-cell-index {
+.focus-area-index {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--text-dim);
+  color: var(--accent);
+  min-width: 32px;
 }
 
-.project-headline-group {
+.focus-area-body {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 6px;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.project-title {
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-  font-weight: 700;
+.focus-area-title {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--text);
-  letter-spacing: -0.02em;
-  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.project-category-tag {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-dim);
-  padding: 1px 6px;
-  border: 1px solid var(--border-light);
-}
-
-.project-description {
-  font-size: 0.92rem;
+.focus-area-desc {
+  font-size: 0.94rem;
   color: var(--text-muted);
   line-height: 1.5;
-  max-width: 580px;
 }
 
-.tech-tags-list {
+/* Technical Stack Overview */
+.tech-stack-overview {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: clamp(24px, 3.5vw, 36px);
+}
+
+.tech-stack-heading {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tech-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tech-group-block {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.tech-tag {
+.tech-group-name {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  background-color: var(--bg-subtle);
-  padding: 3px 8px;
-  border: 1px solid var(--border-light);
-}
-
-.project-cell-year {
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
-
-.project-cell-action {
-  text-align: right;
-}
-
-.project-arrow {
-  display: inline-block;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-dim);
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-/* Project Row Hover Effects */
-.project-row:hover .project-title {
-  transform: translateX(4px);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--accent);
 }
 
-.project-row:hover .project-arrow {
+.tech-group-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tech-group-item {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 500;
+  padding-left: 12px;
+  position: relative;
+}
+
+.tech-group-item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   03 / INTERESTS SECTION
+   4 Clean Horizontal Editorial Rows with Hover Micro-Interaction
+   ========================================================================== */
+
+.interests-table {
+  display: flex;
+  flex-direction: column;
+  border-top: 1.5px solid var(--border-strong);
+}
+
+.interest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 36px);
+  padding: clamp(22px, 3.5vw, 32px) 12px;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+
+.interest-row:hover {
+  background-color: var(--bg-tint);
+  padding-left: 18px;
+}
+
+.interest-num {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 36px;
+}
+
+.interest-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.interest-title {
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  transition: color 0.15s ease;
+}
+
+.interest-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.interest-symbol {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  color: var(--text-dim);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.interest-row:hover .interest-symbol {
   transform: translate(3px, -3px);
   color: var(--accent);
 }
 
-/* ==========================================================================
-   SKILLS SECTION
-   Structured editorial 4-column typographic list
-   ========================================================================== */
-
-.skills-editorial-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(24px, 3.5vw, 48px);
-}
-
-.skill-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.skill-col-header {
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--text);
-  margin-bottom: 18px;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.skill-col-num {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.interest-row:hover .interest-title {
   color: var(--accent);
-  font-weight: 700;
-}
-
-.skill-col-title {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--text);
-  text-transform: uppercase;
-}
-
-.skill-items-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.skill-item {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-size: 0.94rem;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.skill-bullet {
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-}
-
-.skill-name {
-  line-height: 1.4;
 }
 
 /* ==========================================================================
-   CONTACT SECTION
-   Solid flat cobalt blue editorial statement, zero gradients, safe channels
+   04 / CONTACT SECTION
+   High-contrast cobalt blue block, safe contact links, copy buttons
    ========================================================================== */
 
 .contact-editorial-section {
@@ -731,8 +817,8 @@ button:focus-visible {
 .contact-accent-block {
   background-color: var(--accent);
   color: #F4F1EA;
-  padding: clamp(36px, 6vw, 72px) clamp(24px, 5vw, 64px);
-  border: 1px solid var(--text);
+  padding: clamp(36px, 6vw, 68px) clamp(24px, 5vw, 60px);
+  border: 1.5px solid var(--border-strong);
 }
 
 .contact-top-meta {
@@ -743,7 +829,7 @@ button:focus-visible {
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  margin-bottom: clamp(32px, 4vw, 56px);
+  margin-bottom: clamp(32px, 4vw, 52px);
   color: #F4F1EA;
   opacity: 0.85;
 }
@@ -770,7 +856,7 @@ button:focus-visible {
 }
 
 .contact-giant-title {
-  font-size: clamp(3rem, 7vw, 5.8rem);
+  font-size: clamp(3rem, 7vw, 5.6rem);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -921,27 +1007,19 @@ button:focus-visible {
 
 /* ==========================================================================
    RESPONSIVE DESIGN SYSTEM
-   Smooth layout adaptation from 1440px down to 390px
+   1440px -> 1024px -> 768px -> 390px
    ========================================================================== */
 
 /* 1024px: Laptops / Tablets Landscape */
 @media (max-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1.25fr 1fr;
     gap: 36px;
   }
 
-  .skills-editorial-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 36px;
-  }
-
-  .project-row-link {
-    grid-template-columns: 48px minmax(200px, 1.8fr) minmax(140px, 1fr) 40px;
-  }
-
-  .project-cell-year {
-    display: none;
+  .tech-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
@@ -963,7 +1041,7 @@ button:focus-visible {
     display: none;
   }
 
-  .header-ext-link {
+  .header-link {
     display: none;
   }
 
@@ -977,23 +1055,13 @@ button:focus-visible {
     gap: 36px;
   }
 
-  .hero-figure {
-    max-width: 380px;
+  .dossier-card {
+    max-width: 420px;
   }
 
   .section-grid-editorial {
     grid-template-columns: 1fr;
     gap: 24px;
-  }
-
-  .project-row-link {
-    grid-template-columns: 36px 1fr 32px;
-    gap: 16px;
-    padding: 20px 0;
-  }
-
-  .project-cell-tech {
-    display: none;
   }
 
   .contact-main-grid {
@@ -1010,11 +1078,7 @@ button:focus-visible {
 @media (max-width: 480px) {
   :root {
     --gutter: 20px;
-    --section-spacing: 56px;
-  }
-
-  .site-header {
-    border-bottom-width: 1px;
+    --section-spacing: 48px;
   }
 
   .header-inner {
@@ -1035,7 +1099,7 @@ button:focus-visible {
   }
 
   .nav-item {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
   }
 
   .hero-meta-row {
@@ -1048,7 +1112,7 @@ button:focus-visible {
   }
 
   .hero-subline {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
 
   .hero-intro-text {
@@ -1056,12 +1120,11 @@ button:focus-visible {
     line-height: 1.5;
   }
 
-  .hero-status {
-    font-size: 0.72rem;
-    padding: 6px 10px;
+  .hero-status-strip {
+    gap: 8px;
   }
 
-  .hero-figure {
+  .dossier-card {
     width: 100%;
     max-width: 100%;
   }
@@ -1079,9 +1142,13 @@ button:focus-visible {
     display: none;
   }
 
-  .skills-editorial-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .focus-area-row {
+    gap: 16px;
+  }
+
+  .interest-row {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .contact-giant-title {
