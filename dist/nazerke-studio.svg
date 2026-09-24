@@ -1,0 +1,30 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Nazerke at her creative desk</title>
+  <desc id="description">An editorial collage illustration of a woman designing a web interface on a computer.</desc>
+  <rect width="900" height="1100" fill="#2647ED"/>
+  <path d="M0 0H900V1100H0V0Z" fill="url(#grid)" opacity=".2"/>
+  <rect x="58" y="74" width="278" height="242" fill="#DFFF52" stroke="#151711" stroke-width="8"/>
+  <circle cx="691" cy="184" r="116" fill="#FF5D3D" stroke="#151711" stroke-width="8"/>
+  <path d="M120 446C260 351 416 358 525 446C637 536 743 517 900 416V1100H0V535C42 508 81 474 120 446Z" fill="#F5F0E5" stroke="#151711" stroke-width="8"/>
+  <path d="M315 470C315 363 394 282 498 282C603 282 681 363 681 470V616H315V470Z" fill="#151711"/>
+  <ellipse cx="500" cy="485" rx="127" ry="158" fill="#D99A72" stroke="#151711" stroke-width="8"/>
+  <path d="M375 445C422 427 461 395 486 350C525 401 582 437 646 447C634 343 582 300 496 300C417 300 382 354 375 445Z" fill="#151711"/>
+  <circle cx="451" cy="482" r="8" fill="#151711"/>
+  <circle cx="548" cy="482" r="8" fill="#151711"/>
+  <path d="M458 553C483 571 517 571 543 553" stroke="#151711" stroke-width="8" stroke-linecap="round"/>
+  <path d="M302 855C313 679 397 620 501 620C604 620 688 679 701 855H302Z" fill="#FF5D3D" stroke="#151711" stroke-width="8"/>
+  <path d="M0 861H900V1100H0V861Z" fill="#DFFF52" stroke="#151711" stroke-width="8"/>
+  <path d="M146 875L231 643L522 722L452 967L146 875Z" fill="#151711" stroke="#151711" stroke-width="8"/>
+  <rect x="456" y="684" width="303" height="220" transform="rotate(5 456 684)" fill="#F5F0E5" stroke="#151711" stroke-width="8"/>
+  <rect x="499" y="724" width="216" height="124" transform="rotate(5 499 724)" fill="#2647ED"/>
+  <path d="M530 775H681M530 806H631" stroke="#DFFF52" stroke-width="10"/>
+  <circle cx="612" cy="929" r="22" fill="#FF5D3D" stroke="#151711" stroke-width="6"/>
+  <path d="M81 162H287M81 205H247" stroke="#151711" stroke-width="12"/>
+  <path d="M742 365L804 427M804 365L742 427" stroke="#DFFF52" stroke-width="12"/>
+  <path d="M58 1008H254M58 1044H180" stroke="#151711" stroke-width="9"/>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" stroke="#F5F0E5" stroke-width="2"/>
+    </pattern>
+  </defs>
+</svg>
